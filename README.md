@@ -25,8 +25,15 @@ Email:
 ## Contributing
 
 
-## Authors and Acknowledgments
+## Collaborators and Acknowledgments
+Collaborators:
+Dafina Gjonbalaj
+Aboabida Maki
+Guillermo Mateo
+Philip Powers
+Sherri Winslow
 
+Acknowledgements:  University of Connecticut Educational Team: including Dan Seskey, Matt Torcellini, Symone Varnado, Maura Fortino & Claudio.
 ## License
 
 
