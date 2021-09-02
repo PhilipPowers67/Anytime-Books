@@ -14,25 +14,22 @@
         Should I Read This?
       </h1>
     
+      <!-- dropdown  -->
       <div id="dropDown" class="ml-5">
         <p>What type of book would you like to read?</p>
-        <div class=" select is-rounded mb-4">
-          <select name="types" id="types">
+        <form class=" select is-rounded mb-4">
+          <select name="types" id="fictionType">
             <option value="" disabled selected hidden>Select:</option>
-            <option value="fiction">Fiction</option>
-            <option value="nonFiction">Non-Fiction</option>
-            <option value="audio">Audio</option>
-            <option value="eBook">E-Book</option>
+            <!-- <option value="audio">Audio</option>
+            <option value="eBook">E-Book</option> -->
           </select>
-        <div class="control">
-          <button class="button has-background-black has-text-white">Submit</button>
-        </div>
-        </div>
-        
+          <button id="fictionNonfiction" class="button has-background-black has-text-white">Submit</button>
+        </form>
       </div>
-      <div class="columns is-centered">
-          
-          <div class="box is-1 is-bordered">
+
+      <!-- container  -->
+      <div id="viewSelection" class="columns is-centered">
+          <!-- <div class="box is-1 is-bordered">
             First Book
             <div class="column is-size-6">
               Rating
@@ -167,11 +164,12 @@
           </div>
           <br>
           
-        </div>
+        </div> -->
       </div>
       
     
   </section>
 
+  <script src="assets/js/script.js"></script>
   </body>
 </html>
