@@ -1,8 +1,11 @@
 # Project-2 (to be updated)
 
+## Description
+In this project, we created an application to allow the user to request information about books that are currently on the Best Seller list.  The user will be able to store his selections, in local storage, for retrieval.  Considering that the book selections may change on a weekly basis; this will allow the user to keep track of his choices, for future reference.
 ## Built With
-* 
-* 
+* HTML
+* Bulma CSS Framework
+* JavaScript
 
 ## Website
 https://
@@ -10,7 +13,7 @@ https://
  ![image](./assets/images/) 
 
 ## Installation
-Code was created with 
+The application can be displayed in a web browser and was built mobile first, to be responsive to a variety of devices and screen sizes.
 
 ## Usage
 
@@ -20,7 +23,9 @@ Contact:
 Email:  
 
 ## Roadmap
+Initial release: 
 
+Future features:
 
 ## Contributing
 
