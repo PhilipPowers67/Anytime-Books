@@ -27,16 +27,16 @@ Initial release:
 
 Future features:
 
-## Contributing
-
-
-## Collaborators and Acknowledgments
+## Contributors
 Collaborators:
 Dafina Gjonbalaj
 Aboabida Maki
 Guillermo Mateo
 Philip Powers
 Sherri Winslow
+
+## Acknowledgments
+
 
 Acknowledgements:  University of Connecticut Educational Team: including Dan Seskey, Matt Torcellini, Symone Varnado, Maura Fortino & Claudio.
 ## License
