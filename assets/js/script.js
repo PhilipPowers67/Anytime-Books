@@ -1,7 +1,8 @@
 const apiKey = "BLGvAn7JO1dxMb7GRWTLG00RNEZOGQMC";
 const googleKey = "AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU";
 var arr = [];
-var bookSelection = [];
+var bookInfoNyt = [];
+var bookInfoGoogle = [];
 let bookType = document.getElementById("bookType");
 
 // next api
@@ -12,7 +13,7 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
     return response.json();
   })
   .then((response) => {
-    console.log(response);
+    // console.log(response);
     for (i = 0; i < response.results.length; i++) {
       // pushing the name and the code
       arr.push({
@@ -20,7 +21,7 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
         code: response.results[i].list_name_encoded,
       });
     }
-    console.log(arr);
+    // console.log(arr);
   })
   .then(() => {
     // filter list to leave only genre
@@ -46,6 +47,8 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
 
 typeSubmit.addEventListener("click", function (event) {
   event.preventDefault();
+  bookInfoNyt = [];
+  bookInfoGoogle = [];
   let userSelection = document.querySelector("#bookType").value;
   console.log(userSelection);
 
@@ -60,5 +63,41 @@ typeSubmit.addEventListener("click", function (event) {
     })
     .then((secondResponse) => {
       console.log(secondResponse);
+
+      for (i = 0; i < 10; i++) {
+        // pushing the author, isbn, and cover link to array
+        bookInfoNyt.push({
+          author: secondResponse.results.books[i].author,
+          title: secondResponse.results.books[i].title,
+          isbn: secondResponse.results.books[i].primary_isbn13,
+          cover: secondResponse.results.books[i].book_image,
+        });
+      }
+      console.log(bookInfoNyt);
+
+      var selectionContainer = document.querySelector("#viewSelection");
+
+      //   for (i = 0; i < 10; i++) {
+      //     fetch(
+      //       "https://www.googleapis.com/books/v1/volumes?q=" +
+      //         bookInfoNyt[i].author +
+      //         "+isbn:" +
+      //         bookInfoNyt[i].isbn +
+      //         "&key=" +
+      //         googleKey
+      //     )
+      //       .then((googleResponse) => {
+      //         return googleResponse.json();
+      //       })
+      //       .then((googleResponse) => {
+      //         console.log(googleResponse.items);
+
+      //         bookInfoGoogle.push({
+      //           description: googleResponse.items[0].volumeInfo.description,
+      //           title: googleResponse.items[0].volumeInfo.title,
+      //         });
+      //       });
+      //   //   }
+      //   console.log(bookInfoGoogle);
     });
 });
