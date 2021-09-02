@@ -41,8 +41,6 @@ Philip Powers
 Sherri Winslow
 
 ## Acknowledgments
-
-
 Acknowledgements:  University of Connecticut Educational Team: including Dan Seskey, Matt Torcellini, Symone Varnado, Maura Fortino & Claudio.
 ## License
 
