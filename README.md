@@ -37,5 +37,5 @@ Acknowledgements:  University of Connecticut Educational Team: including Dan Ses
 ## License
 
 
-### ©2021 
+### ©2021 Gjonbalaj, Maki, Mateo, Powers, Winslow
 
