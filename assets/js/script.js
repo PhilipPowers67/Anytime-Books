@@ -55,11 +55,8 @@ typeSubmit.addEventListener("click", function (event) {
   console.log(userSelection);
 
   fetch(
-    "https://api.nytimes.com/svc/books/v3/lists/current/" +
-      userSelection +
-      ".json?api-key=" +
-      apiKey
-  )
+    `https://api.nytimes.com/svc/books/v3/lists/current/${userSelection}.json?api-key=${apiKey}`
+    )
     .then((secondResponse) => {
       return secondResponse.json();
     })
@@ -79,20 +76,22 @@ typeSubmit.addEventListener("click", function (event) {
 
       for (let i = 0; i < bookInfoNyt.length; i++) {
         var bookContainer = document.createElement("div");
-        bookInfoGoogle.className = "column is-one-fifth";
+        bookContainer.classList = 'book-container p-2 is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap column is-one-fifth'
+        // bookInfoGoogle.className = "column is-one-fifth";
 
         var bookCover = document.createElement("img");
+        bookCover.classList = 'book-cover is-text-align-center'
         bookCover.setAttribute("src", bookInfoNyt[i].cover);
         bookContainer.appendChild(bookCover);
 
         var bookTitle = document.createElement("div");
         bookTitle.className = "column is-full is-centered";
-        bookTitle.innerHTML = bookInfoNyt[i].title;
+        bookTitle.innerHTML = `<h2>${bookInfoNyt[i].title}</h2>`;
         bookContainer.appendChild(bookTitle);
 
         var bookAuthor = document.createElement("div");
         bookAuthor.className = "column is-full is-centered";
-        bookAuthor.innerHTML = "By " + bookInfoNyt[i].author;
+        bookAuthor.innerHTML = `By ${bookInfoNyt[i].author}`;
         bookContainer.appendChild(bookAuthor);
 
         selectionContainer.appendChild(bookContainer);
