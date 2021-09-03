@@ -4,6 +4,7 @@ var arr = [];
 var bookInfoNyt = [];
 var bookInfoGoogle = [];
 let bookType = document.getElementById("bookType");
+var selectionContainer = document.querySelector("#viewSelection");
 
 // next api
 // fetch ("https://api.nytimes.com/svc/books/v3/lists/current/" + userSelection + ".json?api-key=" + nytKey)
@@ -47,6 +48,7 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
 
 typeSubmit.addEventListener("click", function (event) {
   event.preventDefault();
+  selectionContainer.innerHTML = "";
   bookInfoNyt = [];
   bookInfoGoogle = [];
   let userSelection = document.querySelector("#bookType").value;
@@ -75,7 +77,26 @@ typeSubmit.addEventListener("click", function (event) {
       }
       console.log(bookInfoNyt);
 
-      var selectionContainer = document.querySelector("#viewSelection");
+      for (let i = 0; i < bookInfoNyt.length; i++) {
+        var bookContainer = document.createElement("div");
+        bookInfoGoogle.className = "column is-one-fifth";
+
+        var bookCover = document.createElement("img");
+        bookCover.setAttribute("src", bookInfoNyt[i].cover);
+        bookContainer.appendChild(bookCover);
+
+        var bookTitle = document.createElement("div");
+        bookTitle.className = "column is-full is-centered";
+        bookTitle.innerHTML = bookInfoNyt[i].title;
+        bookContainer.appendChild(bookTitle);
+
+        var bookAuthor = document.createElement("div");
+        bookAuthor.className = "column is-full is-centered";
+        bookAuthor.innerHTML = "By " + bookInfoNyt[i].author;
+        bookContainer.appendChild(bookAuthor);
+
+        selectionContainer.appendChild(bookContainer);
+      }
 
       //   for (i = 0; i < 10; i++) {
       //     fetch(
