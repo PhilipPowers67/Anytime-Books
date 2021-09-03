@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Should I Read This</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="assets/CSS/style.css">
-  </head>
-  <body>
-
-  <section class="section">
-      <h1 class="title has-text-centered has-background-black has-text-white">
-        Should I Read This?
-      </h1>
-    
-      <!-- dropdown  -->
-      <div id="dropDown" class="ml-5">
-        <p>What type of book would you like to read?</p>
-        <form class=" select is-rounded mb-4">
-          <select name="types" id="bookType">
-            <option value="" disabled selected hidden>Select:</option>
-            <!-- <option value="audio">Audio</option>
-            <option value="eBook">E-Book</option> -->
-          </select>
-          <button id="typeSubmit" class="button has-background-black has-text-white">Submit</button>
-        </form>
-      </div>
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Should I Read This</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/CSS/styles.css">
+</head>
+<body>
+  <header class="container.is-fullhd has-background-black has-text-white is-flex is-justify-content-space-between is-align-items-baseline p-3">
+    <h1 class="title has-text-white">Logo</h1>
+    <nav>
+      <ul class="is-flex">
+        <li class="navbar-item"><a class="has-text-white" href="">links</a></li>
+        <li class="navbar-item"><a class="has-text-white" href="">links</a></li>
+        <li class="navbar-item"><a class="has-text-white" href="">links</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="heroSection" class="section container.is-fullhd">
+      <h2 class="has-text-white m-auto">
+        something nice  - example: Get ready to read ...
+      </h2>
+  </section>
+  <!-- dropdown  -->
+  <section id="dropDown" class="container.is-fullhd p-6">
+    <form id="genreForm" class="select is-rounded is-flex is-flex-direction-column">
+      <label>What type of book would you like to read?</label>
+      <select name="types" id="bookType">
+        <option value="" disabled selected hidden>Select Genre:</option>
+      </select>
+      <button id="typeSubmit" class="button has-background-black has-text-white">Submit</button>
+    </form>
+  </section>
+  <section class="container p-6">
       <!-- container  -->
       <div id="viewSelection" class="columns is-centered is-full is-multiline is-mobile">
-          <!-- <div class="box is-1 is-bordered">
+          <!-- 
+            <div class="box is-1 is-bordered">
             First Book
             <div class="column is-size-6">
               Rating
@@ -166,9 +174,14 @@
           
         </div> -->
       </div>
-      
-    
   </section>
+  <footer class="container-is-fullhd is has-background-black">
+    <ul class="is-flex is-justify-content-end">
+      <li class="p-6"><a href="">Links</a></li>
+      <li class="p-6"><a href="">Links</a></li>
+      <li class="p-6"><a href="">Links</a></li>
+    </ul>
+  </footer>
 
   <script src="assets/js/script.js"></script>
   </body>
