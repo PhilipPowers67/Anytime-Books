@@ -105,36 +105,38 @@ appendBooks = () => {
 }
 
 // SAVE TO LOCALSTORAGE
-addToFav = () => {
-  let saveBook = document.querySelector('.saveBook')
-  let title = saveBook.parentNode.childNodes[1].firstChild.textContent
-  let author = saveBook.parentNode.childNodes[2].firstChild.textContent
-  let newItem = {title: title, author: author}
-  console.log(newItem)
+addToFav = (parent) => {
+  let title = parent.childNodes[1].firstChild.textContent
+  let author = parent.childNodes[2].firstChild.textContent
+  let newItem = {
+    author: `${author}`,
+    title: `${title}`}
   var retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || []
-
-  if (retrievedData.length > 0) {
-    var checkSavedBooks = localStorage.getItem('savedBooks')
+  if (localStorage.length > 0) {
     for (i = 0; i < retrievedData.length; i++) {
-      if (!checkSavedBooks[i].includes(newItem.title)) {
-      }
-      debugger
-      if (!checkSavedBooks[i].includes(newItem.title) && retrievedData.length === i) {
-        debugger
-        retrievedData.push(newItem)
-        localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
+      if (retrievedData[i].author === newItem.author) {
+        break
+      } else {
+        if (retrievedData.length - 1 === i) {
+          retrievedData.push(newItem)
+          localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
+        }
       }
     }
   } else {
-    localStorage.setItem('savedBooks', JSON.stringify(newItem))
+    retrievedData.push(newItem)
+    localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
   }
 }
+  // localStorage.setItem('savedBooks', JSON.stringify(newItem))
 
 // SCANS FOR CLICK EVENTS
 searchClick = (event) => {
   let targetEl = event.target
   if (targetEl.matches('.saveBook')) {
-    addToFav()
+    let child = targetEl
+    let parent = child.parentNode 
+    addToFav(parent)
   }
 }
 
