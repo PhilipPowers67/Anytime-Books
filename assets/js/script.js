@@ -104,7 +104,7 @@ appendBooks = () => {
   }
 }
 
-// SAVE TO LOCALSTORAGE
+// SAVE TO LOCAL STORAGE
 addToFav = (parent) => {
   let title = parent.childNodes[1].firstChild.textContent
   let author = parent.childNodes[2].firstChild.textContent
@@ -128,7 +128,6 @@ addToFav = (parent) => {
     localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
   }
 }
-  // localStorage.setItem('savedBooks', JSON.stringify(newItem))
 
 // SCANS FOR CLICK EVENTS
 searchClick = (event) => {
