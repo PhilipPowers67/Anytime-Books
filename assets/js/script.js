@@ -125,8 +125,18 @@ typeSubmit.addEventListener("click", function (event) {
           })
           .then((ok) => {})
           .catch((err) => {
+            // bug resolved, when google returns with not results, added empty strings for now and then push the info to the array of books
             description = "";
             snippet = "";
+
+            bookInfo.push({
+              author: author,
+              title: title,
+              isbn: isbn,
+              cover: cover,
+              description: description,
+              snippet: snippet,
+            });
           });
       }
       console.log(bookInfo);
