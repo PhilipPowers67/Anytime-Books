@@ -5,9 +5,6 @@ var bookInfo = [];
 let bookType = document.getElementById("bookType");
 var selectionContainer = document.querySelector("#viewSelection");
 
-// next api
-// fetch ("https://api.nytimes.com/svc/books/v3/lists/current/" + userSelection + ".json?api-key=" + nytKey)
-
 fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
   .then((response) => {
     return response.json();
@@ -57,7 +54,6 @@ typeSubmit.addEventListener("click", function (event) {
       var bookContainer = document.createElement("div");
       bookContainer.classList =
         "book-container p-2 is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap column is-one-fifth";
-      // bookInfoGoogle.className = "column is-one-fifth";
 
       var bookCover = document.createElement("img");
       bookCover.classList = "book-cover is-text-align-center";
@@ -74,6 +70,7 @@ typeSubmit.addEventListener("click", function (event) {
       bookAuthor.innerHTML = `By ${bookInfo[i].author}`;
       bookContainer.appendChild(bookAuthor);
 
+      // add a short description of the book
       var bookSnippet = document.createElement("div");
       bookSnippet.className = "column in-full is-centered";
       bookSnippet.innerHTML = bookInfo[i].snippet;
@@ -82,7 +79,7 @@ typeSubmit.addEventListener("click", function (event) {
       selectionContainer.appendChild(bookContainer);
     }
   };
-
+  // timeout allows the fetch request to complete prior to loading info on the screen
   setTimeout(pageLoad, 1500);
 
   fetch(
@@ -91,80 +88,47 @@ typeSubmit.addEventListener("click", function (event) {
     .then((secondResponse) => {
       return secondResponse.json();
     })
-    .then(
-      (secondResponse) => {
-        console.log(secondResponse);
+    .then((secondResponse) => {
+      console.log(secondResponse);
 
-        for (i = 0; i < 10; i++) {
-          let isbn = secondResponse.results.books[i].primary_isbn13;
-          let author = secondResponse.results.books[i].author;
-          let title = secondResponse.results.books[i].title;
-          let cover = secondResponse.results.books[i].book_image;
+      for (i = 0; i < secondResponse.results.books.length; i++) {
+        let isbn = secondResponse.results.books[i].primary_isbn13;
+        let author = secondResponse.results.books[i].author;
+        let title = secondResponse.results.books[i].title;
+        let cover = secondResponse.results.books[i].book_image;
 
-          fetch(
-            "https://www.googleapis.com/books/v1/volumes?q=" +
-              author +
-              "+isbn:" +
-              isbn +
-              "&key=" +
-              googleKey
-          )
-            .then((googleResponse) => {
-              return googleResponse.json();
-            })
-            .then((googleResponse) => {
-              console.log(googleResponse.items);
-              let description = googleResponse.items[0].volumeInfo.description;
-              let snippet = googleResponse.items[0].searchInfo.textSnippet;
+        fetch(
+          "https://www.googleapis.com/books/v1/volumes?q=" +
+            author +
+            "+isbn:" +
+            isbn +
+            "&key=" +
+            googleKey
+        )
+          .then((googleResponse) => {
+            return googleResponse.json();
+          })
+          .then((googleResponse) => {
+            console.log(googleResponse.items);
+            // bug!!! when google does not provide information the books does not gets added to the screen
+            let description = googleResponse.items[0].volumeInfo.description;
+            let snippet = googleResponse.items[0].searchInfo.textSnippet;
 
-              bookInfo.push({
-                author: author,
-                title: title,
-                isbn: isbn,
-                cover: cover,
-                description: description,
-                snippet: snippet,
-              });
-            })
-            .then((ok) => {
-              console.log("OK");
-            })
-            .catch((err) => {
-              console.log(err);
+            bookInfo.push({
+              author: author,
+              title: title,
+              isbn: isbn,
+              cover: cover,
+              description: description,
+              snippet: snippet,
             });
-
-          // pushing the author, isbn, and cover link to array
-          // bookInfoNyt.push({
-          //   author: secondResponse.results.books[i].author,
-          //   title: secondResponse.results.books[i].title,
-          //   isbn: secondResponse.results.books[i].primary_isbn13,
-          //   cover: secondResponse.results.books[i].book_image,
-          // });
-        }
-        console.log(bookInfo);
+          })
+          .then((ok) => {})
+          .catch((err) => {
+            description = "";
+            snippet = "";
+          });
       }
-
-      //   for (i = 0; i < 10; i++) {
-      //     fetch(
-      //       "https://www.googleapis.com/books/v1/volumes?q=" +
-      //         bookInfoNyt[i].author +
-      //         "+isbn:" +
-      //         bookInfoNyt[i].isbn +
-      //         "&key=" +
-      //         googleKey
-      //     )
-      //       .then((googleResponse) => {
-      //         return googleResponse.json();
-      //       })
-      //       .then((googleResponse) => {
-      //         console.log(googleResponse.items);
-
-      //         bookInfoGoogle.push({
-      //           description: googleResponse.items[0].volumeInfo.description,
-      //           title: googleResponse.items[0].volumeInfo.title,
-      //         });
-      //       });
-      //   //   }
-      //   console.log(bookInfoGoogle);
-    );
+      console.log(bookInfo);
+    });
 });
