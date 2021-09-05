@@ -1,8 +1,7 @@
 const apiKey = "BLGvAn7JO1dxMb7GRWTLG00RNEZOGQMC";
 const googleKey = "AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU";
 var arr = [];
-var bookInfoNyt = [];
-var bookInfoGoogle = [];
+var bookInfo = [];
 let bookType = document.getElementById("bookType");
 var selectionContainer = document.querySelector("#viewSelection");
 
@@ -49,52 +48,100 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
 typeSubmit.addEventListener("click", function (event) {
   event.preventDefault();
   selectionContainer.innerHTML = "";
-  bookInfoNyt = [];
-  bookInfoGoogle = [];
+  bookInfo = [];
   let userSelection = document.querySelector("#bookType").value;
   console.log(userSelection);
 
+  var pageLoad = function () {
+    for (let i = 0; i < bookInfo.length; i++) {
+      var bookContainer = document.createElement("div");
+      bookContainer.classList =
+        "book-container p-2 is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap column is-one-fifth";
+      // bookInfoGoogle.className = "column is-one-fifth";
+
+      var bookCover = document.createElement("img");
+      bookCover.classList = "book-cover is-text-align-center";
+      bookCover.setAttribute("src", bookInfo[i].cover);
+      bookContainer.appendChild(bookCover);
+
+      var bookTitle = document.createElement("div");
+      bookTitle.className = "column is-full is-centered";
+      bookTitle.innerHTML = `<h2>${bookInfo[i].title}</h2>`;
+      bookContainer.appendChild(bookTitle);
+
+      var bookAuthor = document.createElement("div");
+      bookAuthor.className = "column is-full is-centered";
+      bookAuthor.innerHTML = `By ${bookInfo[i].author}`;
+      bookContainer.appendChild(bookAuthor);
+
+      var bookSnippet = document.createElement("div");
+      bookSnippet.className = "column in-full is-centered";
+      bookSnippet.innerHTML = bookInfo[i].snippet;
+      bookContainer.appendChild(bookSnippet);
+
+      selectionContainer.appendChild(bookContainer);
+    }
+  };
+
+  setTimeout(pageLoad, 1500);
+
   fetch(
     `https://api.nytimes.com/svc/books/v3/lists/current/${userSelection}.json?api-key=${apiKey}`
-    )
+  )
     .then((secondResponse) => {
       return secondResponse.json();
     })
-    .then((secondResponse) => {
-      console.log(secondResponse);
+    .then(
+      (secondResponse) => {
+        console.log(secondResponse);
 
-      for (i = 0; i < 10; i++) {
-        // pushing the author, isbn, and cover link to array
-        bookInfoNyt.push({
-          author: secondResponse.results.books[i].author,
-          title: secondResponse.results.books[i].title,
-          isbn: secondResponse.results.books[i].primary_isbn13,
-          cover: secondResponse.results.books[i].book_image,
-        });
-      }
-      console.log(bookInfoNyt);
+        for (i = 0; i < 10; i++) {
+          let isbn = secondResponse.results.books[i].primary_isbn13;
+          let author = secondResponse.results.books[i].author;
+          let title = secondResponse.results.books[i].title;
+          let cover = secondResponse.results.books[i].book_image;
 
-      for (let i = 0; i < bookInfoNyt.length; i++) {
-        var bookContainer = document.createElement("div");
-        bookContainer.classList = 'book-container p-2 is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap column is-one-fifth'
-        // bookInfoGoogle.className = "column is-one-fifth";
+          fetch(
+            "https://www.googleapis.com/books/v1/volumes?q=" +
+              author +
+              "+isbn:" +
+              isbn +
+              "&key=" +
+              googleKey
+          )
+            .then((googleResponse) => {
+              return googleResponse.json();
+            })
+            .then((googleResponse) => {
+              console.log(googleResponse.items);
+              let description = googleResponse.items[0].volumeInfo.description;
+              let snippet = googleResponse.items[0].searchInfo.textSnippet;
 
-        var bookCover = document.createElement("img");
-        bookCover.classList = 'book-cover is-text-align-center'
-        bookCover.setAttribute("src", bookInfoNyt[i].cover);
-        bookContainer.appendChild(bookCover);
+              bookInfo.push({
+                author: author,
+                title: title,
+                isbn: isbn,
+                cover: cover,
+                description: description,
+                snippet: snippet,
+              });
+            })
+            .then((ok) => {
+              console.log("OK");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
 
-        var bookTitle = document.createElement("div");
-        bookTitle.className = "column is-full is-centered";
-        bookTitle.innerHTML = `<h2>${bookInfoNyt[i].title}</h2>`;
-        bookContainer.appendChild(bookTitle);
-
-        var bookAuthor = document.createElement("div");
-        bookAuthor.className = "column is-full is-centered";
-        bookAuthor.innerHTML = `By ${bookInfoNyt[i].author}`;
-        bookContainer.appendChild(bookAuthor);
-
-        selectionContainer.appendChild(bookContainer);
+          // pushing the author, isbn, and cover link to array
+          // bookInfoNyt.push({
+          //   author: secondResponse.results.books[i].author,
+          //   title: secondResponse.results.books[i].title,
+          //   isbn: secondResponse.results.books[i].primary_isbn13,
+          //   cover: secondResponse.results.books[i].book_image,
+          // });
+        }
+        console.log(bookInfo);
       }
 
       //   for (i = 0; i < 10; i++) {
@@ -119,5 +166,5 @@ typeSubmit.addEventListener("click", function (event) {
       //       });
       //   //   }
       //   console.log(bookInfoGoogle);
-    });
+    );
 });
