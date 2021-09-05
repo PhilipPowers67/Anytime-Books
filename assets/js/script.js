@@ -123,6 +123,7 @@ typeSubmit.addEventListener("click", function (event) {
               snippet: snippet,
             });
           })
+          .then((ok) => {})
           .catch((err) => {
             // bug resolved, when google returns with not results, added empty strings for now and then push the info to the array of books
             description = "";
