@@ -53,7 +53,7 @@ typeSubmit.addEventListener("click", function (event) {
     for (let i = 0; i < bookInfo.length; i++) {
       var bookContainer = document.createElement("div");
       bookContainer.classList =
-        "book-container p-2 is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap column is-one-fifth";
+        "book-container p-2 is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap column is-one-quarter";
 
       var bookCover = document.createElement("img");
       bookCover.classList = "book-cover is-text-align-center";
@@ -70,7 +70,7 @@ typeSubmit.addEventListener("click", function (event) {
       bookAuthor.innerHTML = `By ${bookInfo[i].author}`;
       bookContainer.appendChild(bookAuthor);
 
-      // add a short description of the book
+      // add a snippet (short description) of the book
       var bookSnippet = document.createElement("div");
       bookSnippet.className = "column in-full is-centered";
       bookSnippet.innerHTML = bookInfo[i].snippet;
@@ -113,7 +113,7 @@ typeSubmit.addEventListener("click", function (event) {
             // bug!!! when google does not provide information the books does not gets added to the screen
             let description = googleResponse.items[0].volumeInfo.description;
             let snippet = googleResponse.items[0].searchInfo.textSnippet;
-
+            // pushed the info collected from the fetch to the bookInfo array to use on the page after
             bookInfo.push({
               author: author,
               title: title,
@@ -123,7 +123,6 @@ typeSubmit.addEventListener("click", function (event) {
               snippet: snippet,
             });
           })
-          .then((ok) => {})
           .catch((err) => {
             // bug resolved, when google returns with not results, added empty strings for now and then push the info to the array of books
             description = "";
