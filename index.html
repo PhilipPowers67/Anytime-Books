@@ -8,36 +8,29 @@
   <link rel="stylesheet" href="assets/CSS/styles.css">
 </head>
 <body>
-  <header class="container.is-fullhd has-background-black has-text-white is-flex is-justify-content-space-between is-align-items-baseline p-3">
+  <header>
     <!-- <h1 class="title has-text-white">Logo</h1> -->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar p-1" role="navigation" aria-label="main navigation">
+      <!-- anytime books image  -->
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
           <img src="./assets/images/AnytimeBooksLogoCase.png">
         </a>
-    
-        <!-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a> -->
       </div>
-    
-      <div id="navbarBasicExample" class="has-background-black navbar-menu">
+      <!-- links  -->
+      <div id="navbarBasicExample" class=" navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item has-text-white">
+          <a class="navbar-item">
             Home
           </a>
-    
-          <a class="navbar-item has-text-white">
+          <a class="navbar-item">
             Documentation
           </a>
-    
+          <!-- dropdown  -->
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link has-text-white">
+            <a class="navbar-link">
               More
             </a>
-    
             <div class="navbar-dropdown">
               <a class="navbar-item">
                 About
@@ -55,17 +48,8 @@
             </div>
           </div>
         </div>
-    
         <div class="navbar-end">
           <div class="navbar-item">
-            <!-- <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">
-                Log in
-              </a>
-            </div> -->
           </div>
         </div>
       </div>
@@ -73,30 +57,23 @@
   </header>
   <!-- Hero Section -->
   <section id="heroSection" class="section container.is-medium">
-      <!-- <h2 class="has-text-white m-auto">
-        Do you need help deciding you're next reading adventure?
-        <br>
-        Would you like to know the best books in our extensive genre select?
-      </h2> -->
   </section>
   <!-- Content Section -->
-  <main class="columns">
-  <section id="information" class="column is-two-thirds">
-    <section id="dropDown" class="p-2 column is-flex">
-    <form id="genreForm" class="select is-rounded is-flex">
-      <label>What type of book would you like to read?</label>
-      <select name="types" id="bookType">
-        <option value="" disabled selected hidden>Select Genre:</option>
-      </select>
-      <button id="typeSubmit" class="button has-background-black has-text-white">Submit</button>
-    </form>
-  </section>
-  <section class="container p-6"> 
+  <main>
+  <section id="information" class="is-flex is-flex-direction-column ">
+    <div class="is-flex is-justify-content-space-evenly has-background-dark p-6">
+      <form id="genreForm" class="select is-rounded is-flex is-flex-direction-column is-justify-content-center m-5 p-5">
+        <label class="m-3">What type of book would you like to read?</label>
+        <select name="types" id="bookType" class="m-3">
+          <option value="" disabled selected hidden>Select Genre:</option>
+        </select>
+        <button id="typeSubmit" class="button has-background-black has-text-white m-1">Submit</button>
+      </form>
+    </div>
     <!-- container  -->
-    <div id="viewSelection" class="columns is-centered is-three-quarters is-multiline">
+    <div id="viewSelection" class="columns is-centered is-full is-multiline is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap p-5 m-5">
       <!-- DOM manipulation  -->
     </div>
-  </section>
   <!-- Select dropdown  -->
   </section>
   <!-- Save list -->

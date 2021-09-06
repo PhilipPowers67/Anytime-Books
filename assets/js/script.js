@@ -108,7 +108,8 @@ typeSubmit.addEventListener("click", function (event) {
 let appendBooks = () => {
 for (let i = 0; i < bookInfo.length; i++) {
 let bookContainer = document.createElement("div");
-  bookContainer.classList = 'book-container p-2 m-5 is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap column is-one-fifth'
+  bookContainer.classList = 'book-container is-flex is-flex-direction-row m-3 is-align-content-baseline is-justify-content-center is-flex-wrap-wrap column'
+  // is-four-fifths-mobile is-one-third-tablet is-one-third-desktop is-one-fifth-fullhd
   bookContainer.setAttribute('isbn-code', `${bookInfo[i].isbn}`)
 
 let bookCover = document.createElement("img");
@@ -128,7 +129,7 @@ let bookDescription = document.createElement('div')
   bookDescription.innerHTML = `<p>${bookInfo[i].snippet}</p>`
   bookContainer.appendChild(bookDescription)
 let saveButton = document.createElement('button')
-  saveButton.classList = 'saveBook is-fullwidth p-1 m-2'
+  saveButton.classList = 'saveBook p-1 m-2'
   saveButton.textContent = 'Add to Favorites'
     bookContainer.appendChild(saveButton)
 

@@ -16,20 +16,22 @@
 /* #saveList {
 	height: 300px;
 } */
+nav {
+	background-color: brown;
+}
 
 .book-cover {
 	height: 245px;
 	width: 165px;
 }
 
- .navbar-item img {
-	 max-height: 75px;
+.navbar-item img {
+	max-height: 75px;
 	background-size: cover;
-	
 }
 
 #information {
-	width: fit-content;
+	/* width: 100vw; */
 }
 
 #heroSection {
@@ -40,8 +42,7 @@
 			rgba(0, 0, 0, 0.251715652081145) 50%,
 			rgba(0, 0, 0, 0.7503150918570554) 100%
 		),
-		/* placeholder image  */
-			url(../images/HeroCropped.png);
+		/* placeholder image  */ url(../images/HeroCropped.png);
 	background-position: center;
 	background-size: auto;
 	background-repeat: round;
@@ -56,11 +57,21 @@
 	margin: 10px;
 }
 
+form button {
+	width: fit-content !important;
+}
+
 .book-container {
 	position: relative;
-	/* border: 2px solid; */
+	width: 250px !important;
+	min-width: 230px !important;
+	max-width: 250px;
 	transition: transform 0.2s, box-shadow 0.2s;
 	box-shadow: -1px 1px 4px rgb(70, 70, 70);
+}
+
+main #information form label {
+	line-break: loose;
 }
 
 .book-container::before {
@@ -98,4 +109,8 @@
 .book-container:hover {
 	transform: scale(1.1);
 	box-shadow: -10px 10px 15px rgb(34, 34, 34);
+}
+
+.saveBook {
+	width: fit-content;
 }
