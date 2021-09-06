@@ -9,13 +9,23 @@
 	width: 450px;
 }
 
-#saveList {
+/* #saveList {
 	height: 300px;
-}
+} */
 
 .book-cover {
 	height: 245px;
 	width: 165px;
+}
+
+ .navbar-item img {
+	 max-height: 75px;
+	background-size: cover;
+	
+}
+
+#information {
+	width: fit-content;
 }
 
 #heroSection {
@@ -29,7 +39,7 @@
 		/* placeholder image  */
 			url(../images/HeroCropped.png);
 	background-position: center;
-	background-size: cover;
+	background-size: auto;
 	background-repeat: round;
 	height: 350px;
 }
