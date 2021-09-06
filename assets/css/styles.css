@@ -13,9 +13,23 @@
 	width: 450px;
 }
 
+/* #saveList {
+	height: 300px;
+} */
+
 .book-cover {
 	height: 245px;
 	width: 165px;
+}
+
+ .navbar-item img {
+	 max-height: 75px;
+	background-size: cover;
+	
+}
+
+#information {
+	width: fit-content;
 }
 
 #heroSection {
@@ -27,11 +41,11 @@
 			rgba(0, 0, 0, 0.7503150918570554) 100%
 		),
 		/* placeholder image  */
-			url("https://images.unsplash.com/photo-1532012197267-da84d127e765?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80");
+			url(../images/HeroCropped.png);
 	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	height: 400px;
+	background-size: auto;
+	background-repeat: round;
+	height: 350px;
 }
 
 #viewSection {
