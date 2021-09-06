@@ -1,14 +1,9 @@
 const apiKey = "BLGvAn7JO1dxMb7GRWTLG00RNEZOGQMC";
 const googleKey = "AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU";
 var arr = [];
-var bookInfoNyt = [];
-var bookInfoGoogle = [];
-let saveButton = document.querySelector('.saveBook')
+var bookInfo = [];
 let bookType = document.getElementById("bookType");
 var selectionContainer = document.querySelector("#viewSelection");
-
-// next api
-// fetch ("https://api.nytimes.com/svc/books/v3/lists/current/" + userSelection + ".json?api-key=" + nytKey)
 
 fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
   .then((response) => {
@@ -50,94 +45,137 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
 typeSubmit.addEventListener("click", function (event) {
   event.preventDefault();
   selectionContainer.innerHTML = "";
-  bookInfoNyt = [];
-  bookInfoGoogle = [];
+  bookInfo = [];
   let userSelection = document.querySelector("#bookType").value;
   // console.log(userSelection);
 
   fetch(
     `https://api.nytimes.com/svc/books/v3/lists/current/${userSelection}.json?api-key=${apiKey}`
-    )
+  )
     .then((secondResponse) => {
       return secondResponse.json();
     })
     .then((secondResponse) => {
       // console.log(secondResponse);
+      for (i = 0; i < secondResponse.results.books.length; i++) {
+        let isbn = secondResponse.results.books[i].primary_isbn13;
+        let author = secondResponse.results.books[i].author;
+        let title = secondResponse.results.books[i].title;
+        let cover = secondResponse.results.books[i].book_image;
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${author}+isbn:${isbn}&key=${googleKey}`)
+          .then((googleResponse) => {
+            return googleResponse.json();
+          })
+          .then((googleResponse) => {
+            // console.log(googleResponse);
+            // bug!!! when google does not provide information the books does not gets added to the screen
+            let description = googleResponse.items[0].volumeInfo.description
+            let snippet = googleResponse.items[0].searchInfo.textSnippet
+            // pushed the info collected from the fetch to the bookInfo array to use on the page after
+            bookInfo.push({
+              author: author,
+              title: title,
+              isbn: isbn,
+              cover: cover,
+              description: description,
+              snippet: snippet,
+            });
+          })
+          .then((ok) => {})
+          .catch((err) => {
+            // bug resolved, when google returns with not results, added empty strings for now and then push the info to the array of books
+            // console.log(err)
+              description = "";
+              snippet = "";
+          bookInfo.push({
+            author: author,
+            title: title,
+            isbn: isbn,
+            cover: cover,
+            description: description,
+            snippet: snippet,
+          });
+          });
 
-      for (i = 0; i < 10; i++) {
-        // pushing the author, isbn, and cover link to array
-        bookInfoNyt.push({
-          author: secondResponse.results.books[i].author,
-          title: secondResponse.results.books[i].title,
-          isbn: secondResponse.results.books[i].primary_isbn13,
-          cover: secondResponse.results.books[i].book_image,
-        });
-      }
-      // console.log(bookInfoNyt);
-      appendBooks()
-    });
+        }
+        // console.log(bookInfo);
+    })
+    .then(() => {
+      setTimeout(appendBooks, 1500)
+    })
 });
 
+let appendBooks = () => {
+for (let i = 0; i < bookInfo.length; i++) {
+let bookContainer = document.createElement("div");
+  bookContainer.classList = 'book-container p-2 m-5 is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap column is-one-fifth'
+  bookContainer.setAttribute('isbn-code', `${bookInfo[i].isbn}`)
 
-appendBooks = () => {
-  for (let i = 0; i < bookInfoNyt.length; i++) {
-    let bookContainer = document.createElement("div");
-      bookContainer.classList = 'book-container p-2 m-5 is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap column is-one-fifth'
-    let bookCover = document.createElement("img");
-      bookCover.classList = 'book-cover is-text-align-center'
-      bookCover.setAttribute("src", bookInfoNyt[i].cover);
-      bookContainer.appendChild(bookCover);
-    let bookTitle = document.createElement("div");
-      bookTitle.className = "column is-full is-centered";
-      bookTitle.innerHTML = `<h2>${bookInfoNyt[i].title}</h2>`;
-      bookContainer.appendChild(bookTitle);
-    let bookAuthor = document.createElement("div");
-      bookAuthor.className = "column is-full is-centered";
-      bookAuthor.innerHTML = `${bookInfoNyt[i].author}`;
-      bookContainer.appendChild(bookAuthor);
-    let saveButton = document.createElement('button')
-      saveButton.classList = 'saveBook is-fullwidth p-1 m-2'
-      saveButton.textContent = 'Add to Favorites'
-        bookContainer.appendChild(saveButton)
+let bookCover = document.createElement("img");
+  bookCover.classList = 'book-cover is-text-align-center'
+  bookCover.setAttribute("src", bookInfo[i].cover);
+  bookCover.setAttribute('alt', 'bookCover')
+  bookContainer.appendChild(bookCover);
+let bookTitle = document.createElement("div");
+  bookTitle.className = "column is-full is-centered";
+  bookTitle.innerHTML = `<h2>${bookInfo[i].title}</h2>`;
+  bookContainer.appendChild(bookTitle);
+let bookAuthor = document.createElement("div");
+  bookAuthor.className = "column is-full is-centered";
+  bookAuthor.innerHTML = `${bookInfo[i].author}`;
+  bookContainer.appendChild(bookAuthor);
+let bookDescription = document.createElement('div')
+  bookDescription.innerHTML = `<p>${bookInfo[i].snippet}</p>`
+  bookContainer.appendChild(bookDescription)
+let saveButton = document.createElement('button')
+  saveButton.classList = 'saveBook is-fullwidth p-1 m-2'
+  saveButton.textContent = 'Add to Favorites'
+    bookContainer.appendChild(saveButton)
 
-    selectionContainer.appendChild(bookContainer);
-  }
+selectionContainer.appendChild(bookContainer);
+}
 }
 
-// SAVE TO LOCALSTORAGE
+// // SAVE TO LOCAL STORAGE
 addToFav = (parent) => {
-  let title = parent.childNodes[1].firstChild.textContent
-  let author = parent.childNodes[2].firstChild.textContent
-  let newItem = {
-    author: `${author}`,
-    title: `${title}`}
-  var retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || []
-  if (localStorage.length > 0) {
-    for (i = 0; i < retrievedData.length; i++) {
-      if (retrievedData[i].author === newItem.author) {
-        break
-      } else {
-        if (retrievedData.length - 1 === i) {
-          retrievedData.push(newItem)
-          localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
-        }
-      }
-    }
-  } else {
+  console.log(parent)
+let title = parent.childNodes[1].firstChild.textContent
+let author = parent.childNodes[2].firstChild.textContent
+let description = parent.childNodes[3].firstChild.textContent
+let isbnCode = parent.getAttribute('isbn-code')
+debugger
+let newItem = {
+author: `${author}`,
+title: `${title}`,
+description: `${description}`,
+isbn: `${isbnCode}`}
+var retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || []
+if (localStorage.length > 0) {
+for (i = 0; i < retrievedData.length; i++) {
+if (retrievedData[i].author === newItem.author) {
+  break
+} else {
+  if (retrievedData.length - 1 === i) {
     retrievedData.push(newItem)
     localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
   }
 }
-  // localStorage.setItem('savedBooks', JSON.stringify(newItem))
+}
+} else {
+retrievedData.push(newItem)
+localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
+}
+}
+// localStorage.setItem('savedBooks', JSON.stringify(newItem))
 
-// SCANS FOR CLICK EVENTS
+// // SCANS FOR CLICK EVENTS
 searchClick = (event) => {
-  let targetEl = event.target
-  if (targetEl.matches('.saveBook')) {
-    let child = targetEl
-    let parent = child.parentNode 
-    addToFav(parent)
-  }
+let targetEl = event.target
+if (targetEl.matches('.saveBook')) {
+let child = targetEl
+let parent = child.parentNode 
+addToFav(parent)
+}
 }
 
 selectionContainer.addEventListener('click', searchClick)

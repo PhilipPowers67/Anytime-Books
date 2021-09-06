@@ -34,6 +34,10 @@
 	height: 400px;
 }
 
+#viewSection {
+	background-color: black;
+}
+
 #viewSelection > * {
 	margin: 10px;
 }
@@ -81,13 +85,3 @@
 	transform: scale(1.1);
 	box-shadow: -10px 10px 15px rgb(34, 34, 34);
 }
-
-.saveBook {
-}
-
-/* body::before {
-	position: fixed;
-	content: "Saved";
-	font-size: 70px;
-	inset: 50vh 50vh;
-} */
