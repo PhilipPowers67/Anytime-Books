@@ -1,7 +1,4 @@
-.container {
-  background-size: 100% 100%;
-  width: 100%;
-  background-image: url(../images/Book-300x500.png);
+.book {
   background-repeat: no-repeat;
  /* background-position: center; */
   position: relative;
