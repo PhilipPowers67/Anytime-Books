@@ -161,8 +161,6 @@ if (retrievedData[i].author === newItem.author) {
     localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
   }
 }
-<<<<<<< HEAD
-=======
 }
 } else {
 retrievedData.push(newItem)
@@ -170,7 +168,6 @@ localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
 }
 }
 // localStorage.setItem('savedBooks', JSON.stringify(newItem))
->>>>>>> 0f61ddd96fc655ea81bfe3cdf2e31d9829003fef
 
 // // SCANS FOR CLICK EVENTS
 searchClick = (event) => {
