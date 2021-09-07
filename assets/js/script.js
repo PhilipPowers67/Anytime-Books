@@ -132,9 +132,9 @@ let bookDescription = document.createElement('div')
   bookContainer.appendChild(bookDescription)
 let saveButton = document.createElement('button')
 saveButton.classList = 'saveBook p-1 mt-5 heart-red heart-white'
-// saveButton.textContent = 'Add to Favorites'
-          bookContainer.appendChild(saveButton)
-    selectionContainer.appendChild(bookContainer);
+saveButton.setAttribute('title', 'Add to Favorites')
+    bookContainer.appendChild(saveButton)
+      selectionContainer.appendChild(bookContainer);
 }
 }
 
