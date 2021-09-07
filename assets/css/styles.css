@@ -5,17 +5,10 @@
 	/* outline: 1px solid green; */
 }
 
-/* body {
-	position: relative;
-} */
-
 #genreForm > * {
 	width: 450px;
 }
 
-/* #saveList {
-	height: 300px;
-} */
 nav {
 	background-color: brown;
 }
@@ -28,10 +21,6 @@ nav {
 .navbar-item img {
 	max-height: 75px;
 	background-size: cover;
-}
-
-#information {
-	/* width: 100vw; */
 }
 
 #heroSection {
@@ -68,42 +57,7 @@ form button {
 	max-width: 250px;
 	transition: transform 0.2s, box-shadow 0.2s;
 	box-shadow: -1px 1px 4px rgb(70, 70, 70);
-}
-
-main #information form label {
-	line-break: loose;
-}
-
-.book-container::before {
-	content: "";
-	position: absolute;
-	background-color: rgb(128, 9, 0);
-	inset: 0px 5px;
-	height: 130px;
-	width: 30px;
-	transition: height 0.2s;
-}
-
-.book-container::after {
-	content: "";
-	position: absolute;
-	height: 145px;
-	width: 30px;
-	/* background-color: rgb(117, 65, 50); */
-	inset: 0px -1px;
-	z-index: 5;
-	border-color: transparent transparent white transparent;
-	border-style: solid;
-	border-width: 2px 21px 40px 22px;
-	transition: height 0.2s;
-}
-
-.book-container:hover::before {
-	height: 0px;
-}
-
-.book-container:hover::after {
-	height: 0px;
+	overflow: hidden;
 }
 
 .book-container:hover {
@@ -111,8 +65,70 @@ main #information form label {
 	box-shadow: -10px 10px 15px rgb(34, 34, 34);
 }
 
+.book-container::before {
+	content: "";
+	position: absolute;
+	background-color: rgb(128, 9, 0);
+	inset: -21px 13px;
+	height: 108px;
+	width: 15px;
+	transition: height 0.2s;
+	transform: rotate(35deg);
+}
+/* 
+.book-container:hover::before {
+	height: 0px;
+} */
+
 .saveBook {
+	position: relative;
 	width: fit-content;
+	border: none;
+	outline: none;
+}
+
+.heart-red {
+	background-color: rgb(155, 27, 27);
+	cursor: pointer;
+	display: inline-block;
+	height: 21px;
+	margin: 0 10px;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	transform: rotate(-45deg);
+	width: 20px;
+	transition: background-color 0.2s;
+}
+.heart-red:hover {
+	background-color: rgb(224, 19, 19);
+}
+
+.heart-red:before,
+.heart-red:after {
+	content: "";
+	background-color: rgb(155, 27, 27);
+
+	border-radius: 50%;
+	height: 20px;
+	position: absolute;
+	width: 20px;
+	transition: background-color 0.2s;
+}
+
+.heart-red:before {
+	top: -13px;
+	left: 0;
+}
+
+.heart-red:after {
+	left: 13px;
+	top: 1px;
+}
+
+.heart-red:hover::before,
+.heart-red:hover::after {
+	background-color: rgb(224, 19, 19);
 }
 
 .footerImage {

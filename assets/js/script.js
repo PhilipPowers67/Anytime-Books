@@ -107,33 +107,34 @@ typeSubmit.addEventListener("click", function (event) {
 
 let appendBooks = () => {
 for (let i = 0; i < bookInfo.length; i++) {
-let bookContainer = document.createElement("div");
-  bookContainer.classList = 'book-container is-flex is-flex-direction-row m-3 is-align-content-baseline is-justify-content-center is-flex-wrap-wrap column'
-  // is-four-fifths-mobile is-one-third-tablet is-one-third-desktop is-one-fifth-fullhd
+  let retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || []
+  let bookContainer = document.createElement("div");
+  bookContainer.classList = 'book-container is-flex is-flex-direction-row m-5 is-align-content-baseline is-justify-content-center is-flex-wrap-wrap column'
+  // is-four-fifths-mobile is-one-third-tablet is-one-third-desktop is-one-fifth-full hd
   bookContainer.setAttribute('isbn-code', `${bookInfo[i].isbn}`)
 
 let bookCover = document.createElement("img");
   bookCover.classList = 'book-cover is-text-align-center'
   bookCover.setAttribute("src", bookInfo[i].cover);
-  bookCover.setAttribute('alt', 'bookCover')
+  bookCover.setAttribute('alt', `${bookInfo[i].title}'s cover`)
   bookContainer.appendChild(bookCover);
 let bookTitle = document.createElement("div");
-  bookTitle.className = "column is-full is-centered";
+  bookTitle.className = "column is-full has-text-centered is-capitalized";
   bookTitle.innerHTML = `<h2>${bookInfo[i].title}</h2>`;
   bookContainer.appendChild(bookTitle);
 let bookAuthor = document.createElement("div");
-  bookAuthor.className = "column is-full is-centered";
-  bookAuthor.innerHTML = `${bookInfo[i].author}`;
+  bookAuthor.className = "column is-full has-text-centered is-capitalized";
+  bookAuthor.innerHTML = `<p>${bookInfo[i].author}</p>`;
   bookContainer.appendChild(bookAuthor);
 let bookDescription = document.createElement('div')
   bookDescription.innerHTML = `<p>${bookInfo[i].snippet}</p>`
+  bookDescription.classList = 'my-5 has-text-centered'
   bookContainer.appendChild(bookDescription)
 let saveButton = document.createElement('button')
-  saveButton.classList = 'saveBook p-1 m-2'
-  saveButton.textContent = 'Add to Favorites'
+saveButton.classList = 'saveBook p-1 mt-5 heart-red heart-white'
+saveButton.setAttribute('title', 'Add to Favorites')
     bookContainer.appendChild(saveButton)
-
-selectionContainer.appendChild(bookContainer);
+      selectionContainer.appendChild(bookContainer);
 }
 }
 
@@ -144,7 +145,6 @@ let title = parent.childNodes[1].firstChild.textContent
 let author = parent.childNodes[2].firstChild.textContent
 let description = parent.childNodes[3].firstChild.textContent
 let isbnCode = parent.getAttribute('isbn-code')
-debugger
 let newItem = {
 author: `${author}`,
 title: `${title}`,
