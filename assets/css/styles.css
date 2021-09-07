@@ -114,3 +114,7 @@ main #information form label {
 .saveBook {
 	width: fit-content;
 }
+
+.footerImage {
+	max-height: 75%;
+}

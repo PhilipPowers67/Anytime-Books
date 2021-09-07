@@ -20,14 +20,14 @@
       <!-- links  -->
       <div id="navbarBasicExample" class=" navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
-            Home
+          <a href="#information" class="navbar-item">
+            Book Selection
           </a>
           <a class="navbar-item">
-            Documentation
+            About
           </a>
           <!-- dropdown  -->
-          <div class="navbar-item has-dropdown is-hoverable">
+          <!-- <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               More
             </a>
@@ -46,7 +46,7 @@
                 Report an issue
               </a>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
@@ -63,7 +63,7 @@
   <section id="information" class="is-flex is-flex-direction-column ">
     <div class="is-flex is-justify-content-space-evenly has-background-dark p-6">
       <form id="genreForm" class="select is-rounded is-flex is-flex-direction-column is-justify-content-center m-5 p-5">
-        <label class="m-3">What type of book would you like to read?</label>
+        <label class="m-3 has-text-white">What type of book would you like to read?</label>
         <select name="types" id="bookType" class="m-3">
           <option value="" disabled selected hidden>Select Genre:</option>
         </select>
@@ -78,17 +78,28 @@
   </section>
   <!-- Save list -->
   <section id="saveList" class="column is-one-quarter mt-5 mr-3">
-    <div id="saveList" class="columns has-background-black is-full">  
+    <div class="columns has-background-black is-full">  
     </div>
   </section>
   </main>
-  <footer class="container-is-fullhd is has-background-black">
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Anytime Books</strong> by 
+        <a class="footerImage image">
+          <img src="./assets/images/FooterCropped.png">
+        </a>
+      </p>
+    </div>
+  </footer>
+  <!-- <footer class="container-is-fullhd is has-background-black">
     <ul class="is-flex is-justify-content-end">
       <li class="p-6"><a href="">Links</a></li>
       <li class="p-6"><a href="">Links</a></li>
       <li class="p-6"><a href="">Links</a></li>
     </ul>
-  </footer>
+  </footer> -->
 
   <script src="assets/js/script.js"></script>
   </body>
