@@ -154,7 +154,7 @@ isbn: `${isbnCode}`}
 let retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || []
 if (localStorage.length > 0) {
 for (i = 0; i < retrievedData.length; i++) {
-if (retrievedData[i].author === newItem.author) {
+if (retrievedData[i].isbn === newItem.isbn) {
   break
 } else {
   if (retrievedData.length - 1 === i) {
