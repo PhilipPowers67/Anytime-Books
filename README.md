@@ -11,6 +11,7 @@ At this time, users can look at the save list, where they will be able to again 
 https://
 
 ## Table of Contents
+* [User Story](#userstory)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Credits](#credits)
@@ -24,8 +25,25 @@ https://
 ## Visuals
  ![image](./assets/images/) 
 
+## User Story
+AS A user
+* I WANT to cut the time it takes to find information about popular books
+  * SO THAT I can find my next book, make a reading list, and start reading more books.
+CRITERIA
+* GIVEN THAT I need to find books of interest, review information, make a selection of books that I am interested in and cultivate a reading list
+  * WHEN I load the application, 
+    * THEN I want to view a clean and simple interface that doesn't take a lot of time to use.
+  * WHEN I click on the selector for books
+    * THEN I am presented with a list of genre, or topics, that I can choose from
+  * WHEN I click on a genre, or topic, 
+  * 
+    * Then a list of books appear in columns across the page, with more rows of columns beneath, if needed.
+  * When I click on the red ribbon
+    * THEN I save the 
+
+
 ## Installation
-The application can be displayed in a web browser and was built mobile first, to be responsive to a variety of devices and screen sizes.  Files are available from GitHub, should you choose to copy them and utilize this application for personal purposes on your local machine.
+The application can be displayed in a web browser and was built mobile first, to be responsive to a variety of devices and screen sizes.
 
 ## Usage
 For personal, non-commercial use, educational and the developers' porfolio purposes.
@@ -35,9 +53,14 @@ Contact:
 Email:  
 
 ## Roadmap
-Initial release: Current application includes the ability to make a selection from a Best Seller list and save information to a main list for future reference, unless installed on a local machine.
+Initial release: The current application includes the ability to make a selection from a Best Seller list and save information, in local storage, on your machine, for future use (retrievals, and additions).  It does not cross-sync between devices, at this time.
 
-Future features:  Several features have been discussed including adding customization settings so users can make a changes to the reading list. Other possible features may be the inclusion of links to sites for purchasing books or reading a variety of reviews.  Unless the application is downloaded to a local machine considering adding a selection for read (when you have read it), delete, and possibly a like, or dislike.  
+Future features:  
+  * Provide users a way to delete an unwanted book.
+  * Provide users a way to mark a book as read.
+  * Provide users to links to sites for purchasing books or reading reviews.
+  * Provide feedback to other users with a like or dislike entry and count.
+  * Provide users a pull-out frame, instead of separate page for save their reading list.
 
 ## Credits
 Developers:
