@@ -191,7 +191,7 @@ let loadSaveList = () => {
   if (localStorage.length > 0) {
     for (i = 0; i < retrievedData.length; i++) {
       let listItem = document.createElement('li')
-        listItem.classList = `bookItem is-flex is-flex-direction-column m-5 p-1 is-justify-content-space-evenly reddish column rounded`
+        listItem.classList = `bookItem is-flex is-flex-direction-column m-5 p-1 is-align-content-baseline is-justify-content-start is-flex-wrap-wrap column reddish`
       let bookCoverDiv = document.createElement('div')
         bookCoverDiv.classList = 'm-1 p-1 is-flex is-justify-content-center'
       let bookCover = document.createElement('img')

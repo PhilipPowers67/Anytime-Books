@@ -18,7 +18,7 @@ body {
 
 .bookItem {
 	min-width: 300px;
-	max-width: 400px;
+	max-width: 300px;
 	background-color: rgb(155, 27, 27);
 }
 
@@ -175,7 +175,7 @@ form button {
 	z-index: 9999;
 }
 #saveList:hover {
-	left: 0vw;
+	left: 1vw;
 	width: 100%;
 	height: 80%;
 }
