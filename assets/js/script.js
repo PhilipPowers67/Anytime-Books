@@ -185,37 +185,43 @@ addToFav(parent)
 // FUNCTION FOR LOADING SAVE iTEMS LIST 
 let loadSaveList = () => {
   let savedItemsList = document.getElementById('savedItemsList')
-    savedItemsList.classList = 'p-1'
+    savedItemsList.classList = 'is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap'
     savedItemsList.innerHTML = ''
   let retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || []
-  for (i = 0; i < retrievedData.length; i++) {
-    let listItem = document.createElement('li')
-      listItem.classList = `BookItem is-flex is-flex-direction-column m-1 p-1 is-justify-content-space-evenly reddish column rounded`
-    let bookCoverDiv = document.createElement('div')
-      bookCoverDiv.classList = 'm-1 is-flex is-justify-content-center'
-    let bookCover = document.createElement('img')
-      bookCover.setAttribute('src', `${retrievedData[i].cover}`)
-        bookCoverDiv.appendChild(bookCover)
-          listItem.appendChild(bookCoverDiv)
-    let titleAuthorDiv = document.createElement('div')
-      titleAuthorDiv.classList = 'is-flex is-flex-direction-column is-justify-content-space-evenly my-5 has-text-centered'
-      let title = document.createElement('h3')
-        title.classList = 'm-1 is-capitalized'
-        title.textContent = `Title: ${retrievedData[i].title}`
-        titleAuthorDiv.appendChild(title)
-      let author = document.createElement('p')
-      author.classList = `m-1 is-capitalized`
-      author.textContent = `Author: ${retrievedData[i].author}`
-        titleAuthorDiv.appendChild(author)
-          listItem.appendChild(titleAuthorDiv)
-    let descriptionDiv = document.createElement('div')
-      descriptionDiv.classList = `is-flex is-align-content-center p-1 has-text-centered`
-    let description = document.createElement('p')
-    description.textContent = `${retrievedData[i].description}`
-      descriptionDiv.appendChild(description)
-        listItem.appendChild(descriptionDiv)
-    
-    savedItemsList.appendChild(listItem)
+  if (localStorage.length > 0) {
+    for (i = 0; i < retrievedData.length; i++) {
+      let listItem = document.createElement('li')
+        listItem.classList = `bookItem is-flex is-flex-direction-column m-5 p-1 is-justify-content-space-evenly reddish column rounded`
+      let bookCoverDiv = document.createElement('div')
+        bookCoverDiv.classList = 'm-1 p-1 is-flex is-justify-content-center'
+      let bookCover = document.createElement('img')
+        bookCover.setAttribute('src', `${retrievedData[i].cover}`)
+          bookCoverDiv.appendChild(bookCover)
+            listItem.appendChild(bookCoverDiv)
+      let titleAuthorDiv = document.createElement('div')
+        titleAuthorDiv.classList = 'is-flex is-flex-direction-column is-justify-content-space-between my-5 has-text-centered'
+        let title = document.createElement('h3')
+          title.classList = 'm-1 is-capitalized'
+          title.textContent = `Title: ${retrievedData[i].title}`
+          titleAuthorDiv.appendChild(title)
+        let author = document.createElement('p')
+        author.classList = `m-1 is-capitalized`
+        author.textContent = `Author: ${retrievedData[i].author}`
+          titleAuthorDiv.appendChild(author)
+            listItem.appendChild(titleAuthorDiv)
+      let descriptionDiv = document.createElement('div')
+        descriptionDiv.classList = `is-flex is-align-content-center p-1 has-text-centered`
+      let description = document.createElement('p')
+      description.textContent = `${retrievedData[i].description}`
+        descriptionDiv.appendChild(description)
+          listItem.appendChild(descriptionDiv)
+      
+      savedItemsList.appendChild(listItem)
+    }
+  } else {
+    let placeHolder = document.createElement('p')
+      placeHolder.textContent = 'Your list is Empty.'
+    savedItemsList.appendChild(placeHolder)
   }
 }
 
