@@ -14,16 +14,12 @@ body {
 	width: 450px;
 }
 
-.book-section {
-	position: relative;
-}
-
 label {
 	width: fit-content !important;
 }
 
-nav a {
-	color: green;
+nav {
+	background-color: brown;
 }
 
 .book-cover {

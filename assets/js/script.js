@@ -183,7 +183,7 @@ addToFav(parent)
 }
 
 let expand = () => {
-  
+
 }
 
 selectionContainer.addEventListener('click', searchClick)
