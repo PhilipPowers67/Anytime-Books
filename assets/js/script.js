@@ -201,20 +201,22 @@ let loadSaveList = () => {
       let titleAuthorDiv = document.createElement('div')
         titleAuthorDiv.classList = 'is-flex is-flex-direction-column is-justify-content-space-between my-5 has-text-centered'
         let title = document.createElement('h3')
-          title.classList = 'm-1 is-capitalized'
-          title.textContent = `Title: ${retrievedData[i].title}`
+          title.classList = 'm-1 is-capitalized is-justify-content-start'
+          title.innerHTML = `<span class="is-underlined has-text-weight-bold">Title:</span> ${retrievedData[i].title}`
           titleAuthorDiv.appendChild(title)
         let author = document.createElement('p')
-        author.classList = `m-1 is-capitalized`
-        author.textContent = `Author: ${retrievedData[i].author}`
+        author.classList = `m-1 is-capitalized is-align-items-start`
+        author.innerHTML = `<span class="is-underlined has-text-weight-bold">Author:</span> ${retrievedData[i].author}`
           titleAuthorDiv.appendChild(author)
             listItem.appendChild(titleAuthorDiv)
       let descriptionDiv = document.createElement('div')
-        descriptionDiv.classList = `is-flex is-align-content-center p-1 has-text-centered`
+        descriptionDiv.classList = `is-flex is-align-content-center p-2 has-text-centered`
       let description = document.createElement('p')
-      description.textContent = `${retrievedData[i].description}`
+      if (retrievedData[i].description != '') {
+        description.innerHTML = `<span class="is-underlined has-text-weight-bold">Description:</span> ${retrievedData[i].description}`
         descriptionDiv.appendChild(description)
-          listItem.appendChild(descriptionDiv)
+        listItem.appendChild(descriptionDiv)
+      }
       
       savedItemsList.appendChild(listItem)
     }
