@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	outline: 1px solid rgb(0, 0, 0);
+	/* outline: 1px solid rgb(0, 0, 0); */
 }
 
 body {
@@ -42,8 +42,8 @@ label {
 	width: fit-content !important;
 }
 
-nav {
-	background-color: brown;
+.navbar {
+	box-shadow: 1px 1px 10px rgb(46, 46, 46);
 }
 
 .book-cover {
