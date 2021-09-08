@@ -42,8 +42,8 @@ CRITERIA
     * THEN I can click on a selector
     * THEN the selection will be saved to a reading list.
   * WHEN I want to review my reading list
-    * THEN I can select a link for the reading/saved list
-    * THEN I can view the list on a separate page.
+    * THEN I can select a tab to view the saved books.
+    * THEN I can view information about the books I have saved.
   * WHEN I want information about Anytime Books or its developers
     * THEN I can use the navigation links to go to an About page.
 
@@ -76,7 +76,6 @@ Future features:
   * Provide users a way to mark a book as read.
   * Provide users to links to sites for purchasing books or reading reviews.
   * Provide feedback to other users with a like or dislike entry and count.
-  * Provide users a pull-out frame, instead of separate page for save their reading list.
 
 ## Credits
 Developers:
@@ -85,6 +84,10 @@ Developers:
 * Guillermo Mateo
 * Philip Powers
 * Sherri Winslow
+
+This project was pair-coded by the above developers in a variety of ways.  We worked together to get initial functionality, with a bare-bones html.  Afterwards, each developer worked individually and in pairs on different aspects of the project.  Although, each had a primary focus, we met as a group and pair-coded and resolved issues, helping each other to provide a quality product, that we hope you will enjoy.
+
+Dafina Gjonbalaj and Philip Powers focused on overall design, colors, and branding and the navigation/header and footer.  Guillermo Mateo and Maki A. Maki focus of JavaScript coding, APIs and local storage for the save list.  Sherri Winslow focused on documentation: an about page for developer information and contact and the readme.  This was truly a group effort that learned to meet challenges and obstacles together.
 
 ## Acknowledgments
 Acknowledgements:  University of Connecticut Educational Team: including Dan Seskey, Matt Torcellini, Symone Varnado, Maura Fortino & Claudio.
