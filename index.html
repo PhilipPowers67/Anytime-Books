@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="assets/CSS/styles.css">
 </head>
-<body>
+<body class="has-navbar-fixed-top">
   <header>
     <!-- <h1 class="title has-text-white">Logo</h1> -->
-    <nav class="navbar p-1" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <!-- anytime books image  -->
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
@@ -25,15 +25,25 @@
       <!-- links  -->
       <div id="navbarBasic" class="navbar-menu is-active has-dropdown">
         <div class="navbar-end">
-          <a class="navbar-item" href="#">
-            Home
-          </a>
-          <a href="#information" class="navbar-item">
-            Reading List
-          </a>
-          <a class="navbar-item">
-            About
-          </a>
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary" href="#">
+                <strong>Home</strong>
+              </a>
+              <a class="button is-primary" href="#information">
+                <strong>Genre Selection</strong>
+              </a>
+              <!-- Seperate page for saved reading list
+                <a class="button is-primary">
+                <strong>Reading List</strong>
+              </a>-->
+            
+              <a class="button is-primary">
+                <strong>About</strong>
+              </a>
+            </div>
+          </div>
+        </div>
           <!-- dropdown  -->
           <!-- <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
@@ -66,7 +76,7 @@
   <main>
   <section class="">
     <section id="information" class="is-flex is-flex-direction-column ">
-      <div class="is-flex is-justify-content-space-evenly has-background-dark p-6">
+      <div class="is-flex is-justify-content-space-evenly has-background-primary p-6">
         <form id="genreForm" class="select is-rounded is-flex is-flex-direction-column is-justify-content-center m-5 p-5">
           <label class="m-3 has-text-white">What type of book would you like to read?</label>
           <select name="types" id="bookType" class="m-3">
