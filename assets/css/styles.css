@@ -34,9 +34,8 @@ label {
 	width: fit-content !important;
 }
 
-header,
 nav {
-	background-color: #fafafa !important;
+	background-color: brown;
 }
 
 .book-cover {
@@ -50,13 +49,14 @@ nav {
 }
 
 #heroSection {
-	background: rgb(108, 108, 108);
-	background: linear-gradient(
+	background: rgb(0, 0, 0);
+	background-image: linear-gradient(
 			90deg,
-			rgba(108, 108, 108, 0.5990545876553747) 0%,
-			rgba(108, 108, 108, 0.5990545876553747) 100%
+			rgba(0, 0, 0, 0.7503150918570554) 0%,
+			rgba(0, 0, 0, 0.251715652081145) 50%,
+			rgba(0, 0, 0, 0.7503150918570554) 100%
 		),
-		url(../images/HeroCropped.png);
+		/* placeholder image  */ url(../images/HeroCropped.png);
 	background-position: center;
 	background-size: auto;
 	background-repeat: round;
@@ -64,15 +64,11 @@ nav {
 }
 
 #viewSection {
-	background-color: black !important;
+	background-color: black;
 }
 
 #viewSelection > * {
 	margin: 10px;
-}
-
-#formDiv {
-	background-color: rgb(128, 9, 0);
 }
 
 form button {
@@ -80,7 +76,6 @@ form button {
 }
 
 .book-container {
-	color: black;
 	position: relative;
 	width: 250px !important;
 	min-width: 230px !important;

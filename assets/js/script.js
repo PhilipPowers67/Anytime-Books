@@ -16,6 +16,7 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
   .then((response) => {
     // console.log(response);
     for (i = 0; i < response.results.length; i++) {
+      // pushing the name and the code
       arr.push({
         name: response.results[i].display_name,
         code: response.results[i].list_name_encoded,
@@ -108,7 +109,7 @@ typeSubmit.addEventListener("click", function (event) {
 let appendBooks = () => {
   for (let i = 0; i < bookInfo.length; i++) {
     let bookContainer = document.createElement("div");
-      bookContainer.classList = 'book-container is-flex is-flex-direction-row m-5 is-align-content-baseline is-justify-content-center is-flex-wrap-wrap column'
+      bookContainer.classList = 'book-container is-flex is-flex-direction-row m-5 is-align-content-baseline is-justify-content-center is-flex-wrap-wrap column has-text-dark'
       // is-four-fifths-mobile is-one-third-tablet is-one-third-desktop is-one-fifth-full hd
       bookContainer.setAttribute('isbn-code', `${bookInfo[i].isbn}`)
     let bookCover = document.createElement("img");
@@ -230,4 +231,25 @@ let loadSaveList = () => {
 // LOAD SAVED LIST 
 loadSaveList()
 
+
 selectionContainer.addEventListener('click', searchClick)
+
+// BULMA PRECODED FOR NAVBAR FUNCTIONALITY 
+document.addEventListener('DOMContentLoaded', () => {
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+    // Add a click event on each of them
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  }
+});

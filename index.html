@@ -7,39 +7,51 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="assets/CSS/styles.css">
 </head>
-<body ">
+<body class="has-navbar-fixed-top">
     <!-- Save list -->
   <section id="saveList" class="p-2 is-flex is-flex-direction-column is-flex-wrap-nowrap">
     <div class="column is-flex is-justify-content-center">
       <h2 class="title is-2 has-text-white">Saved Books:</h2>
     </div>
-    <ul id="savedItemsList">
+    <ul id="savedItemsList" class="has-text-black">
       <!-- DOM manipulation for Saved List  -->
     </ul>
   </section>
   <header>
     <!-- <h1 class="title has-text-white">Logo</h1> -->
-    <nav class="navbar p-1" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <!-- anytime books image  -->
       <div class="navbar-brand">
         <a class="navbar-item" href="#">
           <img src="./assets/images/AnytimeBooksLogoCase.png">
         </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
       <!-- links  -->
-      <div id="navbarBasicExample" class=" navbar-menu">
-        <div class="navbar-start">
-          <a href="#information" class="navbar-item">
-            Book Selection
-          </a>
-          <a class="navbar-item">
-            About
-          </a>
-          <!-- dropdown  -->
-        </div>
+      <div id="navbarBasic" class="navbar-menu is-active has-dropdown">
         <div class="navbar-end">
           <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary" href="#">
+                <strong>Home</strong>
+              </a>
+              <a class="button is-primary" href="#information">
+                <strong>Genre Selection</strong>
+              </a>
+              <!-- Seperate page for saved reading list
+                <a class="button is-primary">
+                <strong>Reading List</strong>
+              </a>-->
+              <a class="button is-primary">
+                <strong>About</strong>
+              </a>
+            </div>
           </div>
+        </div>
         </div>
       </div>
     </nav>
@@ -51,7 +63,7 @@
   <main>
   <section class="book-section">
     <section id="information" class="is-flex is-flex-direction-column ">
-      <div id="formDiv" class="is-flex is-justify-content-space-evenly p-6">
+      <div id="formDiv" class="is-flex is-justify-content-space-evenly has-background-primary p-6">
         <form id="genreForm" class="select is-rounded is-flex is-flex-direction-column is-justify-content-center m-5 p-5">
           <label class="m-3 has-text-white">What type of book would you like to read?</label>
           <select name="types" id="bookType" class="m-3">
