@@ -8,6 +8,37 @@
   <link rel="stylesheet" href="assets/CSS/styles.css">
 </head>
 <body>
+    <!-- Save list -->
+  <section id="saveList" class="p-5 is-flex is-flex-direction-column is-flex-wrap-nowrap">
+    <div class="column">
+      <h2>Saved Books:</h2>
+    </div>
+    <div class="is-flex">
+      <ul class="is-flex is-flex-wrap-nowrap is-flex-direction-column">
+        <li class="BookItem m-3 is-flex is-flex-direction-row m-4 p-4 is-justify-content-space-evenly">
+          <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="random">
+          <div class="is-flex is-flex-direction-column">
+            <h3 class="m-1">Title</h3>
+            <p class="m-1">author</p>
+          </div>
+          <div class="is-flex is-align-content-center is-justify-content-space-evenly">
+            <p>description Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo officia, tempore molestias amet debitis totam! Illo eum consequuntur perspiciatis repudiandae repellat ipsa quisquam esse. Voluptates laboriosam deserunt totam unde aspernatur.</p>
+          </div>
+        </li>
+        <li class="BookItem m-3">
+          <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="random">
+          <h3>Title</h3>
+          <p>author</p>
+        </li>
+        <li class="BookItem m-3">
+          <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="random">
+          <h3>Title</h3>
+          <p>author</p>
+        </li>
+      </ul>
+    </div>
+    <!-- <button>Close tab</button> -->
+  </section>
   <header>
     <!-- <h1 class="title has-text-white">Logo</h1> -->
     <nav class="navbar p-1" role="navigation" aria-label="main navigation">
@@ -27,26 +58,6 @@
             About
           </a>
           <!-- dropdown  -->
-          <!-- <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div>
-          </div> -->
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
@@ -60,10 +71,10 @@
   </section>
   <!-- Content Section -->
   <main>
-  <section class="">
+  <section class="book-section">
     <section id="information" class="is-flex is-flex-direction-column ">
       <div class="is-flex is-justify-content-space-evenly has-background-dark p-6">
-        <form id="genreForm" class="select is-rounded is-flex is-flex-direction-column is-justify-content-center m-5 p-5">
+        <form id="genreForm" class="select is-rounded is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-center m-5 p-5">
           <label class="m-3">What type of book would you like to read?</label>
           <select name="types" id="bookType" class="m-3">
             <option value="" disabled selected hidden>Select Genre:</option>
@@ -76,11 +87,6 @@
         <!-- DOM manipulation  -->
       </div>
     <!-- Select dropdown  -->
-    </section>
-    <!-- Save list -->
-    <section id="saveList" class="column is-one-quarter mt-5 mr-3">
-      <div id="saveList" class="columns has-background-black is-full">
-      </div>
     </section>
   </section>
   </main>

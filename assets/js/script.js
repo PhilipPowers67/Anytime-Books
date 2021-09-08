@@ -1,5 +1,8 @@
 const apiKey = "BLGvAn7JO1dxMb7GRWTLG00RNEZOGQMC";
-const googleKey = "AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU";
+const googleKey = "AIzaSyCx8NiDI6Ge2sYcKzVC2o3wYYzOESQGHKs";
+                          const makiGoogleApi = 'AIzaSyCx8NiDI6Ge2sYcKzVC2o3wYYzOESQGHKs';
+                          const philipGoogleApi = 'AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc'
+                          const GuilGoogleApi = 'AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU'
 var arr = [];
 var bookInfo = [];
 let bookType = document.getElementById("bookType");
@@ -131,7 +134,7 @@ let bookDescription = document.createElement('div')
   bookDescription.classList = 'my-5 has-text-centered'
   bookContainer.appendChild(bookDescription)
 let saveButton = document.createElement('button')
-saveButton.classList = 'saveBook p-1 mt-5 heart-red heart-white'
+saveButton.classList = 'saveBook p-1 mt-5 heart-red'
 saveButton.setAttribute('title', 'Add to Favorites')
     bookContainer.appendChild(saveButton)
       selectionContainer.appendChild(bookContainer);
@@ -177,6 +180,10 @@ let child = targetEl
 let parent = child.parentNode 
 addToFav(parent)
 }
+}
+
+let expand = () => {
+  
 }
 
 selectionContainer.addEventListener('click', searchClick)
