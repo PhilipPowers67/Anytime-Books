@@ -11,7 +11,7 @@ At this time, users can look at the save list, where they will be able to again 
 https://
 
 ## Table of Contents
-* [User Story](#userstory)
+* [User/Developer Story](#story)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Credits](#credits)
@@ -24,8 +24,7 @@ https://
 
 ## Visuals
  ![image](./assets/images/) 
-
-## User Story
+## Story
 AS A user
 * I WANT to cut the time it takes to find information about popular books
   * SO THAT I can find my next book, make a reading list, and start reading more books.
@@ -36,17 +35,34 @@ CRITERIA
   * WHEN I click on the selector for books
     * THEN I am presented with a list of genre, or topics, that I can choose from
   * WHEN I click on a genre, or topic, 
-  * 
-    * Then a list of books appear in columns across the page, with more rows of columns beneath, if needed.
-  * When I click on the red ribbon
-    * THEN I save the 
+    * THEN a list of books appears apears
+  * WHEN I look at the list, to choose a book
+    * THEN I see an image of the bookcover and can review information about the book.
+  * WHEN I have chosen a book that I am interested in.
+    * THEN I can click on a selector
+    * THEN the selection will be saved to a reading list.
+  * WHEN I want to review my reading list
+    * THEN I can select a link for the reading/saved list
+    * THEN I can view the list on a separate page.
+  * WHEN I want information about Anytime Books or its developers
+    * THEN I can use the navigation links to go to an About page.
 
-
+As A developer
+* I WANT to find out more information about Anytime Books project
+  * SO THAT I can either contact the developers, contribute to the project, get more information about the project or view the code.
+CRITERIA
+* GIVEN THAT I wamt to contact the developers
+  * WHEN I load the application
+    * THEN I can click on the About link, in the navigation bar
+    * THEN I will be able to see contact information for each developer, in the credits.
+  * WHEN I want to contribute to the project or view the code or readme.
+    * THEN I can click on the About link
+    * THEN I can click on a developer's GitHub link, in the credits.
 ## Installation
 The application can be displayed in a web browser and was built mobile first, to be responsive to a variety of devices and screen sizes.
 
 ## Usage
-For personal, non-commercial use, educational and the developers' porfolio purposes.
+For personal, non-commercial, and educational use and each developers' porfolio purposes.
 
 ## Support
 Contact:  

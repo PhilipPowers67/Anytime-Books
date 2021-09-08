@@ -1,0 +1,116 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	/* outline: 1px solid green; */
+}
+
+/* body {
+	position: relative;
+} */
+
+#genreForm > * {
+	width: 450px;
+}
+
+/* #saveList {
+	height: 300px;
+} */
+nav {
+	background-color: brown;
+}
+
+.book-cover {
+	height: 245px;
+	width: 165px;
+}
+
+.navbar-item img {
+	max-height: 75px;
+	background-size: cover;
+}
+
+#information {
+	/* width: 100vw; */
+}
+
+#heroSection {
+	background: rgb(0, 0, 0);
+	background-image: linear-gradient(
+			90deg,
+			rgba(0, 0, 0, 0.7503150918570554) 0%,
+			rgba(0, 0, 0, 0.251715652081145) 50%,
+			rgba(0, 0, 0, 0.7503150918570554) 100%
+		),
+		/* placeholder image  */ url(../images/HeroCropped.png);
+	background-position: center;
+	background-size: auto;
+	background-repeat: round;
+	height: 350px;
+}
+
+#viewSection {
+	background-color: black;
+}
+
+#viewSelection > * {
+	margin: 10px;
+}
+
+form button {
+	width: fit-content !important;
+}
+
+.book-container {
+	position: relative;
+	width: 250px !important;
+	min-width: 230px !important;
+	max-width: 250px;
+	transition: transform 0.2s, box-shadow 0.2s;
+	box-shadow: -1px 1px 4px rgb(70, 70, 70);
+}
+
+main #information form label {
+	line-break: loose;
+}
+
+.book-container::before {
+	content: "";
+	position: absolute;
+	background-color: rgb(128, 9, 0);
+	inset: 0px 5px;
+	height: 130px;
+	width: 30px;
+	transition: height 0.2s;
+}
+
+.book-container::after {
+	content: "";
+	position: absolute;
+	height: 145px;
+	width: 30px;
+	/* background-color: rgb(117, 65, 50); */
+	inset: 0px -1px;
+	z-index: 5;
+	border-color: transparent transparent white transparent;
+	border-style: solid;
+	border-width: 2px 21px 40px 22px;
+	transition: height 0.2s;
+}
+
+.book-container:hover::before {
+	height: 0px;
+}
+
+.book-container:hover::after {
+	height: 0px;
+}
+
+.book-container:hover {
+	transform: scale(1.1);
+	box-shadow: -10px 10px 15px rgb(34, 34, 34);
+}
+
+.saveBook {
+	width: fit-content;
+}
