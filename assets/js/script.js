@@ -84,17 +84,17 @@ typeSubmit.addEventListener("click", function (event) {
             bookContainer.appendChild(bookCover);
             let bookTitle = document.createElement("div");
             bookTitle.className =
-              "column is-full has-text-centered is-capitalized";
+              "column title is-full has-text-centered is-capitalized";
             bookTitle.innerHTML = `<h2>${title}</h2>`;
             bookContainer.appendChild(bookTitle);
             let bookAuthor = document.createElement("div");
             bookAuthor.className =
-              "column is-full has-text-centered is-capitalized";
-            bookAuthor.innerHTML = `<p>${author}</p>`;
+              "column author is-full has-text-centered is-capitalized";
+            bookAuthor.innerHTML = `<h3>${author}</h3>`;
             bookContainer.appendChild(bookAuthor);
             let bookDescription = document.createElement("div");
             bookDescription.innerHTML = `<p>${snippet}</p>`;
-            bookDescription.classList = "my-5 has-text-centered";
+            bookDescription.classList = "snippet my-5 has-text-centered";
             bookContainer.appendChild(bookDescription);
             let saveButton = document.createElement("button");
             saveButton.classList = "saveBook p-1 mt-5 heart-red";
@@ -117,17 +117,17 @@ typeSubmit.addEventListener("click", function (event) {
             bookContainer.appendChild(bookCover);
             let bookTitle = document.createElement("div");
             bookTitle.className =
-              "column is-full has-text-centered is-capitalized";
+              "column title is-full has-text-centered is-capitalized";
             bookTitle.innerHTML = `<h2>${title}</h2>`;
             bookContainer.appendChild(bookTitle);
             let bookAuthor = document.createElement("div");
             bookAuthor.className =
-              "column is-full has-text-centered is-capitalized";
-            bookAuthor.innerHTML = `<p>${author}</p>`;
+              "column author is-full has-text-centered is-capitalized";
+            bookAuthor.innerHTML = `<h3>${author}</h3>`;
             bookContainer.appendChild(bookAuthor);
             let bookDescription = document.createElement("div");
             bookDescription.innerHTML = `<p>${snippet}</p>`;
-            bookDescription.classList = "my-5 has-text-centered";
+            bookDescription.classList = "snippet my-5 has-text-centered";
             bookContainer.appendChild(bookDescription);
             let saveButton = document.createElement("button");
             saveButton.classList = "saveBook p-1 mt-5 heart-red";
