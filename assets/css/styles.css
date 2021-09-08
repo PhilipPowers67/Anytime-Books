@@ -9,6 +9,10 @@
 	width: 450px;
 }
 
+label {
+	width: fit-content !important;
+}
+
 nav {
 	background-color: brown;
 }

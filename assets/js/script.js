@@ -1,5 +1,5 @@
 const apiKey = "BLGvAn7JO1dxMb7GRWTLG00RNEZOGQMC";
-const googleKey = "AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU";
+const googleKey = "AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc";
 var arr = [];
 var bookInfo = [];
 let bookType = document.getElementById("bookType");
