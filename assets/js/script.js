@@ -1,11 +1,10 @@
 const apiKey = "BLGvAn7JO1dxMb7GRWTLG00RNEZOGQMC";
 const googleKey = "AIzaSyCx8NiDI6Ge2sYcKzVC2o3wYYzOESQGHKs";
-        // MULTIPLE GOOGLE API KEYS  
-      // const makiGoogleApi = 'AIzaSyCx8NiDI6Ge2sYcKzVC2o3wYYzOESQGHKs';
-      // const philipGoogleApi = 'AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc'
-      // const guilGoogleApi = 'AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU'
+// MULTIPLE GOOGLE API KEYS
+// const makiGoogleApi = 'AIzaSyCx8NiDI6Ge2sYcKzVC2o3wYYzOESQGHKs';
+// const philipGoogleApi = 'AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc'
+// const guilGoogleApi = 'AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU'
 var arr = [];
-var bookInfo = [];
 let bookType = document.getElementById("bookType");
 var selectionContainer = document.querySelector("#viewSelection");
 
@@ -25,7 +24,7 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
     // console.log(arr);
   })
   .then(() => {
-    // FILTER LIST AND LEAVE GENRES ONLY 
+    // FILTER LIST AND LEAVE GENRES ONLY
     for (i = 0; i < arr.length; i++) {
       if (
         !arr[i].name.includes("Fiction") &&
@@ -60,195 +59,202 @@ typeSubmit.addEventListener("click", function (event) {
       return secondResponse.json();
     })
     .then((secondResponse) => {
-      // console.log(secondResponse);
       for (i = 0; i < secondResponse.results.books.length; i++) {
         let isbn = secondResponse.results.books[i].primary_isbn13;
         let author = secondResponse.results.books[i].author;
         let title = secondResponse.results.books[i].title;
         let cover = secondResponse.results.books[i].book_image;
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${author}+isbn:${isbn}&key=${googleKey}`)
+        fetch(
+          `https://www.googleapis.com/books/v1/volumes?q=${author}+isbn:${isbn}&key=${googleKey}`
+        )
           .then((googleResponse) => {
             return googleResponse.json();
           })
           .then((googleResponse) => {
-            // console.log(googleResponse);
-            let description = googleResponse.items[0].volumeInfo.description
-            let snippet = googleResponse.items[0].searchInfo.textSnippet
-            bookInfo.push({
-              author: author,
-              title: title,
-              isbn: isbn,
-              cover: cover,
-              description: description,
-              snippet: snippet,
-            });
+            let snippet = googleResponse.items[0].searchInfo.textSnippet;
+
+            let bookContainer = document.createElement("div");
+            bookContainer.classList =
+              "book-container is-flex is-flex-direction-row m-5 is-align-content-baseline is-justify-content-center is-flex-wrap-wrap column has-text-dark";
+            bookContainer.setAttribute("isbn-code", `${isbn}`);
+            let bookCover = document.createElement("img");
+            bookCover.classList = "book-cover is-text-align-center";
+            bookCover.setAttribute("src", cover);
+            bookCover.setAttribute("alt", `${title}'s cover`);
+            bookContainer.appendChild(bookCover);
+            let bookTitle = document.createElement("div");
+            bookTitle.className =
+              "column is-full has-text-centered is-capitalized";
+            bookTitle.innerHTML = `<h2>${title}</h2>`;
+            bookContainer.appendChild(bookTitle);
+            let bookAuthor = document.createElement("div");
+            bookAuthor.className =
+              "column is-full has-text-centered is-capitalized";
+            bookAuthor.innerHTML = `<p>${author}</p>`;
+            bookContainer.appendChild(bookAuthor);
+            let bookDescription = document.createElement("div");
+            bookDescription.innerHTML = `<p>${snippet}</p>`;
+            bookDescription.classList = "my-5 has-text-centered";
+            bookContainer.appendChild(bookDescription);
+            let saveButton = document.createElement("button");
+            saveButton.classList = "saveBook p-1 mt-5 heart-red";
+            saveButton.setAttribute("title", "Add to Favorites");
+            bookContainer.appendChild(saveButton);
+            selectionContainer.appendChild(bookContainer);
           })
           .then((ok) => {})
           .catch((err) => {
-            // console.log(err)
-          description = "";
-          snippet = "";
-            bookInfo.push({
-              author: author,
-              title: title,
-              isbn: isbn,
-              cover: cover,
-              description: description,
-              snippet: snippet,
-            });
-          });
-        }
-        // console.log(bookInfo);
-    })
-    .then(() => {
-      // SET TIMEOUT FOR SOLVING ASYNC PROBLEM 
-      setTimeout(appendBooks, 1500)
-    })
-});
+            snippet = "";
 
-let appendBooks = () => {
-  for (let i = 0; i < bookInfo.length; i++) {
-    let bookContainer = document.createElement("div");
-      bookContainer.classList = 'book-container is-flex is-flex-direction-row m-5 is-align-content-baseline is-justify-content-center is-flex-wrap-wrap column has-text-dark'
-      // is-four-fifths-mobile is-one-third-tablet is-one-third-desktop is-one-fifth-full hd
-      bookContainer.setAttribute('isbn-code', `${bookInfo[i].isbn}`)
-    let bookCover = document.createElement("img");
-      bookCover.classList = 'book-cover is-text-align-center'
-      bookCover.setAttribute("src", bookInfo[i].cover);
-      bookCover.setAttribute('alt', `${bookInfo[i].title}'s cover`)
-      bookContainer.appendChild(bookCover);
-    let bookTitle = document.createElement("div");
-      bookTitle.className = "column is-full has-text-centered is-capitalized";
-      bookTitle.innerHTML = `<h2>${bookInfo[i].title}</h2>`;
-      bookContainer.appendChild(bookTitle);
-    let bookAuthor = document.createElement("div");
-      bookAuthor.className = "column is-full has-text-centered is-capitalized";
-      bookAuthor.innerHTML = `<p>${bookInfo[i].author}</p>`;
-      bookContainer.appendChild(bookAuthor);
-    let bookDescription = document.createElement('div')
-      bookDescription.innerHTML = `<p>${bookInfo[i].snippet}</p>`
-      bookDescription.classList = 'my-5 has-text-centered'
-      bookContainer.appendChild(bookDescription)
-    let saveButton = document.createElement('button')
-    saveButton.classList = 'saveBook p-1 mt-5 heart-red'
-    saveButton.setAttribute('title', 'Add to Favorites')
-        bookContainer.appendChild(saveButton)
-          selectionContainer.appendChild(bookContainer);
-  }
-}
+            let bookContainer = document.createElement("div");
+            bookContainer.classList =
+              "book-container is-flex is-flex-direction-row m-5 is-align-content-baseline is-justify-content-center is-flex-wrap-wrap column has-text-dark";
+            bookContainer.setAttribute("isbn-code", `${isbn}`);
+            let bookCover = document.createElement("img");
+            bookCover.classList = "book-cover is-text-align-center";
+            bookCover.setAttribute("src", cover);
+            bookCover.setAttribute("alt", `${title}'s cover`);
+            bookContainer.appendChild(bookCover);
+            let bookTitle = document.createElement("div");
+            bookTitle.className =
+              "column is-full has-text-centered is-capitalized";
+            bookTitle.innerHTML = `<h2>${title}</h2>`;
+            bookContainer.appendChild(bookTitle);
+            let bookAuthor = document.createElement("div");
+            bookAuthor.className =
+              "column is-full has-text-centered is-capitalized";
+            bookAuthor.innerHTML = `<p>${author}</p>`;
+            bookContainer.appendChild(bookAuthor);
+            let bookDescription = document.createElement("div");
+            bookDescription.innerHTML = `<p>${snippet}</p>`;
+            bookDescription.classList = "my-5 has-text-centered";
+            bookContainer.appendChild(bookDescription);
+            let saveButton = document.createElement("button");
+            saveButton.classList = "saveBook p-1 mt-5 heart-red";
+            saveButton.setAttribute("title", "Add to Favorites");
+            bookContainer.appendChild(saveButton);
+            selectionContainer.appendChild(bookContainer);
+          });
+      }
+    });
+});
 
 // // SAVE TO LOCAL STORAGE
 addToFav = (parent) => {
   // console.log(parent)
-let cover = parent.childNodes[0].getAttribute('src')
-let title = parent.childNodes[1].firstChild.textContent
-let author = parent.childNodes[2].firstChild.textContent
-let description = parent.childNodes[3].firstChild.textContent
-let isbnCode = parent.getAttribute('isbn-code')
-let newItem = {
-cover: `${cover}`,
-author: `${author}`,
-title: `${title}`,
-description: `${description}`,
-isbn: `${isbnCode}`}
-let retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || []
-if (localStorage.length > 0) {
-for (i = 0; i < retrievedData.length; i++) {
-if (retrievedData[i].isbn === newItem.isbn) {
-  break
-} else {
-  if (retrievedData.length - 1 === i) {
-    retrievedData.push(newItem)
-    localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
-    loadSaveList()
+  let cover = parent.childNodes[0].getAttribute("src");
+  let title = parent.childNodes[1].firstChild.textContent;
+  let author = parent.childNodes[2].firstChild.textContent;
+  let description = parent.childNodes[3].firstChild.textContent;
+  let isbnCode = parent.getAttribute("isbn-code");
+  let newItem = {
+    cover: `${cover}`,
+    author: `${author}`,
+    title: `${title}`,
+    description: `${description}`,
+    isbn: `${isbnCode}`,
+  };
+  let retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || [];
+  if (localStorage.length > 0) {
+    for (i = 0; i < retrievedData.length; i++) {
+      if (retrievedData[i].isbn === newItem.isbn) {
+        break;
+      } else {
+        if (retrievedData.length - 1 === i) {
+          retrievedData.push(newItem);
+          localStorage.setItem("savedBooks", JSON.stringify(retrievedData));
+          loadSaveList();
+        }
+      }
+    }
+  } else {
+    retrievedData.push(newItem);
+    localStorage.setItem("savedBooks", JSON.stringify(retrievedData));
+    loadSaveList();
   }
-}
-}
-} else {
-retrievedData.push(newItem)
-localStorage.setItem('savedBooks', JSON.stringify(retrievedData))
-loadSaveList()
-
-}
-}
+};
 
 // // SCANS FOR CLICK EVENTS
 searchClick = (event) => {
-let targetEl = event.target
-// IF THE ADD TO FAVORITES BUTTON (HEART) IS PRESSED 
-if (targetEl.matches('.saveBook')) {
-let child = targetEl
-let parent = child.parentNode 
-addToFav(parent)
-}
-}
+  let targetEl = event.target;
+  // IF THE ADD TO FAVORITES BUTTON (HEART) IS PRESSED
+  if (targetEl.matches(".saveBook")) {
+    let child = targetEl;
+    let parent = child.parentNode;
+    addToFav(parent);
+  }
+};
 
-// FUNCTION FOR LOADING SAVE iTEMS LIST 
+// FUNCTION FOR LOADING SAVE iTEMS LIST
 let loadSaveList = () => {
-  let savedItemsList = document.getElementById('savedItemsList')
-    savedItemsList.classList = 'is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap'
-    savedItemsList.innerHTML = ''
-  let retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || []
+  let savedItemsList = document.getElementById("savedItemsList");
+  savedItemsList.classList =
+    "is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap";
+  savedItemsList.innerHTML = "";
+  let retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || [];
   if (localStorage.length > 0) {
     for (i = 0; i < retrievedData.length; i++) {
-      let listItem = document.createElement('li')
-        listItem.classList = `bookItem is-flex is-flex-direction-column m-5 p-1 is-align-content-baseline is-justify-content-start is-flex-wrap-wrap column reddish`
-      let bookCoverDiv = document.createElement('div')
-        bookCoverDiv.classList = 'm-1 p-1 is-flex is-justify-content-center'
-      let bookCover = document.createElement('img')
-        bookCover.setAttribute('src', `${retrievedData[i].cover}`)
-          bookCoverDiv.appendChild(bookCover)
-            listItem.appendChild(bookCoverDiv)
-      let titleAuthorDiv = document.createElement('div')
-        titleAuthorDiv.classList = 'is-flex is-flex-direction-column is-justify-content-space-between my-5 has-text-centered'
-        let title = document.createElement('h3')
-          title.classList = 'm-1 is-capitalized is-justify-content-start'
-          title.innerHTML = `<span class="is-underlined has-text-weight-bold">Title:</span> ${retrievedData[i].title}`
-          titleAuthorDiv.appendChild(title)
-        let author = document.createElement('p')
-        author.classList = `m-1 is-capitalized is-align-items-start`
-        author.innerHTML = `<span class="is-underlined has-text-weight-bold">Author:</span> ${retrievedData[i].author}`
-          titleAuthorDiv.appendChild(author)
-            listItem.appendChild(titleAuthorDiv)
-      let descriptionDiv = document.createElement('div')
-        descriptionDiv.classList = `is-flex is-align-content-center p-2 has-text-centered`
-      let description = document.createElement('p')
-      if (retrievedData[i].description != '') {
-        description.innerHTML = `<span class="is-underlined has-text-weight-bold">Description:</span> ${retrievedData[i].description}`
-        descriptionDiv.appendChild(description)
-        listItem.appendChild(descriptionDiv)
+      let listItem = document.createElement("li");
+      listItem.classList = `bookItem is-flex is-flex-direction-column m-5 p-1 is-align-content-baseline is-justify-content-start is-flex-wrap-wrap column reddish`;
+      let bookCoverDiv = document.createElement("div");
+      bookCoverDiv.classList = "m-1 p-1 is-flex is-justify-content-center";
+      let bookCover = document.createElement("img");
+      bookCover.setAttribute("src", `${retrievedData[i].cover}`);
+      bookCoverDiv.appendChild(bookCover);
+      listItem.appendChild(bookCoverDiv);
+      let titleAuthorDiv = document.createElement("div");
+      titleAuthorDiv.classList =
+        "is-flex is-flex-direction-column is-justify-content-space-between my-5 has-text-centered";
+      let title = document.createElement("h3");
+      title.classList = "m-1 is-capitalized is-justify-content-start";
+      title.innerHTML = `<span class="is-underlined has-text-weight-bold">Title:</span> ${retrievedData[i].title}`;
+      titleAuthorDiv.appendChild(title);
+      let author = document.createElement("p");
+      author.classList = `m-1 is-capitalized is-align-items-start`;
+      author.innerHTML = `<span class="is-underlined has-text-weight-bold">Author:</span> ${retrievedData[i].author}`;
+      titleAuthorDiv.appendChild(author);
+      listItem.appendChild(titleAuthorDiv);
+      let descriptionDiv = document.createElement("div");
+      descriptionDiv.classList = `is-flex is-align-content-center p-2 has-text-centered`;
+      let description = document.createElement("p");
+      if (retrievedData[i].description != "") {
+        description.innerHTML = `<span class="is-underlined has-text-weight-bold">Description:</span> ${retrievedData[i].description}`;
+        descriptionDiv.appendChild(description);
+        listItem.appendChild(descriptionDiv);
       }
-      
-      savedItemsList.appendChild(listItem)
+
+      savedItemsList.appendChild(listItem);
     }
   } else {
-    let placeHolder = document.createElement('p')
-      placeHolder.textContent = 'Your list is Empty.'
-    savedItemsList.appendChild(placeHolder)
+    let placeHolder = document.createElement("p");
+    placeHolder.textContent = "Your list is Empty.";
+    savedItemsList.appendChild(placeHolder);
   }
-}
+};
 
-// LOAD SAVED LIST 
-loadSaveList()
+// LOAD SAVED LIST
+loadSaveList();
 
+selectionContainer.addEventListener("click", searchClick);
 
-selectionContainer.addEventListener('click', searchClick)
-
-// BULMA PRECODED FOR NAVBAR FUNCTIONALITY 
-document.addEventListener('DOMContentLoaded', () => {
+// BULMA PRECODED FOR NAVBAR FUNCTIONALITY
+document.addEventListener("DOMContentLoaded", () => {
   // Get all "navbar-burger" elements
-  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  const $navbarBurgers = Array.prototype.slice.call(
+    document.querySelectorAll(".navbar-burger"),
+    0
+  );
   // Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
     // Add a click event on each of them
-    $navbarBurgers.forEach( el => {
-      el.addEventListener('click', () => {
+    $navbarBurgers.forEach((el) => {
+      el.addEventListener("click", () => {
         // Get the target from the "data-target" attribute
         const target = el.dataset.target;
         const $target = document.getElementById(target);
         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
+        el.classList.toggle("is-active");
+        $target.classList.toggle("is-active");
       });
     });
   }
