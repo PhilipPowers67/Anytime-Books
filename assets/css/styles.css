@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	/* outline: 1px solid rgb(0, 0, 0); */
+	outline: 1px solid rgb(0, 0, 0);
 }
 
 body {
@@ -14,6 +14,14 @@ body {
 #savedItemsList {
 	width: 100%;
 	list-style-type: none;
+}
+
+#saveList h2 {
+	border: 1px solid white;
+	border-radius: 10px;
+	height: fit-content;
+	padding: 10px;
+	background-color: white;
 }
 
 .bookItem {
@@ -49,17 +57,10 @@ nav {
 }
 
 #heroSection {
-	background: rgb(0, 0, 0);
-	background-image: linear-gradient(
-			90deg,
-			rgba(0, 0, 0, 0.7503150918570554) 0%,
-			rgba(0, 0, 0, 0.251715652081145) 50%,
-			rgba(0, 0, 0, 0.7503150918570554) 100%
-		),
-		/* placeholder image  */ url(../images/HeroCropped.png);
+	background-image: url(../images/Hero.png);
 	background-position: center;
-	background-size: auto;
-	background-repeat: round;
+	background-size: 75%;
+	background-repeat: no-repeat;
 	height: 350px;
 }
 
@@ -94,7 +95,7 @@ form button {
 .book-container::before {
 	content: "";
 	position: absolute;
-	background-color: rgb(128, 9, 0);
+	background-color: rgb(255, 56, 96);
 	inset: -21px 13px;
 	height: 108px;
 	width: 15px;
@@ -110,7 +111,7 @@ form button {
 }
 
 .heart-red {
-	background-color: rgb(155, 27, 27);
+	background-color: rgb(255, 56, 96);
 	cursor: pointer;
 	display: inline-block;
 	height: 21px;
@@ -129,7 +130,7 @@ form button {
 .heart-red:before,
 .heart-red:after {
 	content: "";
-	background-color: rgb(155, 27, 27);
+	background-color: rgb(255, 56, 96);
 	border-radius: 50%;
 	height: 20px;
 	position: absolute;
