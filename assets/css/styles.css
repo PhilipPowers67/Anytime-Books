@@ -9,7 +9,9 @@ body {
 	position: relative;
 	color: rgb(255, 255, 255);
 }
-
+#genreForm::after {
+	content: none !important;
+}
 #genreForm > * {
 	width: 450px;
 }
@@ -18,8 +20,9 @@ label {
 	width: fit-content !important;
 }
 
+header,
 nav {
-	background-color: brown;
+	background-color: #fafafa !important;
 }
 
 .book-cover {
@@ -34,13 +37,7 @@ nav {
 
 #heroSection {
 	background: rgb(0, 0, 0);
-	background-image: linear-gradient(
-			90deg,
-			rgba(0, 0, 0, 0.7503150918570554) 0%,
-			rgba(0, 0, 0, 0.251715652081145) 50%,
-			rgba(0, 0, 0, 0.7503150918570554) 100%
-		),
-		/* placeholder image  */ url(../images/HeroCropped.png);
+	background-image: url(../images/HeroCropped.png);
 	background-position: center;
 	background-size: auto;
 	background-repeat: round;
@@ -48,11 +45,15 @@ nav {
 }
 
 #viewSection {
-	background-color: black;
+	background-color: black !important;
 }
 
 #viewSelection > * {
 	margin: 10px;
+}
+
+#formDiv {
+	background-color: rgb(6, 143, 122);
 }
 
 form button {
@@ -87,6 +88,10 @@ form button {
 	transform: rotate(35deg);
 }
 
+#savedItemsList {
+	width: clamp(300px, 400px, 420px);
+}
+
 .saveBook {
 	position: relative;
 	width: fit-content;
@@ -115,7 +120,6 @@ form button {
 .heart-red:after {
 	content: "";
 	background-color: rgb(155, 27, 27);
-
 	border-radius: 50%;
 	height: 20px;
 	position: absolute;
@@ -144,12 +148,11 @@ form button {
 
 #saveList {
 	position: fixed;
-	background-color: rgb(100, 96, 96);
 	width: 500px;
 	height: 50px;
-	top: 20%;
-	bottom: 20%;
-	border: 1px solid black;
+	background-color: rgb(165, 160, 160);
+	top: 10%;
+	border: 3px solid;
 	border-radius: 10px;
 	left: 98vw;
 	transition: left 0.5s, width 0.5s, height 1s, background-color 0.5s;
@@ -159,22 +162,20 @@ form button {
 
 #saveList:hover {
 	left: 0vw;
+	background-color: rgb(87, 87, 87);
 	width: 100%;
-	background-color: rgb(139, 43, 43);
-	height: 500px;
+	height: 80%;
+}
+
+.reddish {
+	background-color: rgb(155, 27, 27);
 }
 
 #saveList img {
-	height: 75px;
-	width: 50px;
+	height: 175px;
+	width: 150px;
 }
 
 #saveList ul {
 	list-style-type: none;
-}
-
-.bookItem .unorderedListDiv {
-	width: 100%;
-	overflow-y: visible;
-	overflow-x: hidden;
 }

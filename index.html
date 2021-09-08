@@ -9,35 +9,13 @@
 </head>
 <body>
     <!-- Save list -->
-  <section id="saveList" class="p-5 is-flex is-flex-direction-column is-flex-wrap-nowrap">
-    <div class="column">
-      <h2>Saved Books:</h2>
+  <section id="saveList" class="p-2 is-flex is-flex-direction-column is-flex-wrap-nowrap">
+    <div class="column is-flex is-justify-content-center">
+      <h2 class="title is-2 has-text-white">Saved Books:</h2>
     </div>
-    <div class="is-flex">
-      <ul class="is-flex is-flex-wrap-nowrap is-flex-direction-column">
-        <li class="BookItem m-3 is-flex is-flex-direction-row m-4 p-4 is-justify-content-space-evenly">
-          <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="random">
-          <div class="is-flex is-flex-direction-column">
-            <h3 class="m-1">Title</h3>
-            <p class="m-1">author</p>
-          </div>
-          <div class="is-flex is-align-content-center is-justify-content-space-evenly">
-            <p>description Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo officia, tempore molestias amet debitis totam! Illo eum consequuntur perspiciatis repudiandae repellat ipsa quisquam esse. Voluptates laboriosam deserunt totam unde aspernatur.</p>
-          </div>
-        </li>
-        <li class="BookItem m-3">
-          <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="random">
-          <h3>Title</h3>
-          <p>author</p>
-        </li>
-        <li class="BookItem m-3">
-          <img src="https://ichef.bbci.co.uk/news/999/cpsprodpb/15951/production/_117310488_16.jpg" alt="random">
-          <h3>Title</h3>
-          <p>author</p>
-        </li>
-      </ul>
-    </div>
-    <!-- <button>Close tab</button> -->
+    <ul id="savedItemsList" class="is-flex is-flex-wrap-nowrap is-flex-direction-column p-1 is-justify-content-center">
+      <!-- DOM manipulation for Saved List  -->
+    </ul>
   </section>
   <header>
     <!-- <h1 class="title has-text-white">Logo</h1> -->
@@ -73,7 +51,7 @@
   <main>
   <section class="book-section">
     <section id="information" class="is-flex is-flex-direction-column ">
-      <div class="is-flex is-justify-content-space-evenly has-background-dark p-6">
+      <div id="formDiv" class="is-flex is-justify-content-space-evenly p-6">
         <form id="genreForm" class="select is-rounded is-flex is-flex-direction-column is-justify-content-center m-5 p-5">
           <label class="m-3 has-text-white">What type of book would you like to read?</label>
           <select name="types" id="bookType" class="m-3">
