@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AnyTime Books</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/CSS/styles.css">
+</head>
+<body>
+  <header>
+    <!-- <h1 class="title has-text-white">Logo</h1> -->
+    <nav class="navbar p-1" role="navigation" aria-label="main navigation">
+      <!-- anytime books image  -->
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <img src="./assets/images/AnytimeBooksLogoCase.png">
+        </a>
+      </div>
+      <!-- links  -->
+      <div id="navbarBasicExample" class=" navbar-menu">
+        <div class="navbar-start">
+          <a href="#information" class="navbar-item">
+            Book Selection
+          </a>
+          <a class="navbar-item">
+            About
+          </a>
+          <!-- dropdown  -->
+          <!-- <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          </div> -->
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Hero Section -->
+  <section id="heroSection" class="section container.is-medium">
+  </section>
+  <!-- Content Section -->
+  <main>
+  <section class="">
+    <section id="information" class="is-flex is-flex-direction-column ">
+      <div class="is-flex is-justify-content-space-evenly has-background-dark p-6">
+        <form id="genreForm" class="select is-rounded is-flex is-flex-direction-column is-justify-content-center m-5 p-5">
+          <label class="m-3 has-text-white">What type of book would you like to read?</label>
+          <select name="types" id="bookType" class="m-3">
+            <option value="" disabled selected hidden>Select Genre:</option>
+          </select>
+          <button id="typeSubmit" class="button has-background-black has-text-white m-1">Submit</button>
+        </form>
+      </div>
+      <!-- container  -->
+      <div id="viewSelection" class="columns is-centered is-full is-multiline is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap p-5 m-5">
+        <!-- DOM manipulation  -->
+      </div>
+    <!-- Select dropdown  -->
+    </section>
+    <!-- Save list -->
+    <section id="saveList" class="column is-one-quarter mt-5 mr-3">
+      <div id="saveList" class="columns has-background-black is-full">
+      </div>
+    </section>
+  </section>
+  </main>
+
+  <footer class="footer has-background-white">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Anytime Books</strong> by 
+        <a class="footerImage is-6by1">
+          <img src="./assets/images/FooterCropped.png">
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+  </body>
+</html>
