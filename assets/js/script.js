@@ -195,7 +195,7 @@ let loadSaveList = () => {
   if (localStorage.length > 0) {
     for (i = 0; i < retrievedData.length; i++) {
       let listItem = document.createElement("li");
-      listItem.classList = `bookItem is-flex is-flex-direction-column m-5 p-1 is-align-content-baseline is-justify-content-start is-flex-wrap-wrap column reddish`;
+      listItem.classList = `bookItem is-flex is-flex-direction-column m-5 p-1 is-justify-content-start is-flex-wrap-wrap column`;
       let bookCoverDiv = document.createElement("div");
       bookCoverDiv.classList = "m-1 p-1 is-flex is-justify-content-center";
       let bookCover = document.createElement("img");
@@ -206,12 +206,12 @@ let loadSaveList = () => {
       titleAuthorDiv.classList =
         "is-flex is-flex-direction-column is-justify-content-space-between my-5 has-text-centered";
       let title = document.createElement("h3");
-      title.classList = "m-1 is-capitalized is-justify-content-start";
-      title.innerHTML = `<span class="is-underlined has-text-weight-bold">Title:</span> ${retrievedData[i].title}`;
+      title.classList = "m-1 is-capitalized is-justify-content-start is-2";
+      title.textContent = `${retrievedData[i].title}`;
       titleAuthorDiv.appendChild(title);
       let author = document.createElement("p");
-      author.classList = `m-1 is-capitalized is-align-items-start`;
-      author.innerHTML = `<span class="is-underlined has-text-weight-bold">Author:</span> ${retrievedData[i].author}`;
+      author.classList = `m-1 is-capitalized is-align-items-start is-italic`;
+      author.textContent = `${retrievedData[i].author}`;
       titleAuthorDiv.appendChild(author);
       listItem.appendChild(titleAuthorDiv);
 
