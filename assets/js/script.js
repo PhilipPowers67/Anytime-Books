@@ -8,7 +8,7 @@ var arr = [];
 let bookType = document.getElementById("bookType");
 var selectionContainer = document.querySelector("#viewSelection");
 
-// collects information from NYT best sellers list to create a selection for user
+// COLLECTS INFORMATION FROM NEW YORK TIMES BEST SELLERS LIST TO CREATE A SELECTION FOR THE USER
 fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
   .then((response) => {
     return response.json();
@@ -44,7 +44,7 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
   })
   .catch((error) => console.log(error));
 
-// on submit from user fetches information from NYT and google to give the user a good selection of books to choose
+// WHEN USER SUBMITS A SELECTION, THIS FETCHES INFORMATION FROM NEW_YORK_TIMES AND GOOGLE TO GIVE THE USER A GOOD SELECTION OF BOOKS TO CHOOSE FROM
 typeSubmit.addEventListener("click", function (event) {
   event.preventDefault();
   selectionContainer.innerHTML = "";
@@ -58,7 +58,7 @@ typeSubmit.addEventListener("click", function (event) {
       return secondResponse.json();
     })
     .then((secondResponse) => {
-      // forloop takes information collected and places it on the page with a save list option
+      // forloop takes information collected and places it on the page with a save option
       for (i = 0; i < secondResponse.results.books.length; i++) {
         let isbn = secondResponse.results.books[i].primary_isbn13;
         let author = secondResponse.results.books[i].author;
@@ -71,6 +71,7 @@ typeSubmit.addEventListener("click", function (event) {
             return googleResponse.json();
           })
           .then((googleResponse) => {
+            // IF THE GOOGLE FETCH WAS SUCCESSFUL THE INFORMATION WILL BE APPENDED TO THE PAGE 
             let snippet = googleResponse.items[0].searchInfo.textSnippet;
 
             let bookContainer = document.createElement("div");
@@ -84,12 +85,12 @@ typeSubmit.addEventListener("click", function (event) {
             bookContainer.appendChild(bookCover);
             let bookTitle = document.createElement("div");
             bookTitle.className =
-              "title is-full has-text-centered is-capitalized";
-            bookTitle.innerHTML = `<h2>${title}</h2>`;
+              "p-3 title is-full has-text-centered is-capitalized";
+            bookTitle.innerHTML = `<h2 class='is-full'>${title}</h2>`;
             bookContainer.appendChild(bookTitle);
             let bookAuthor = document.createElement("div");
             bookAuthor.className =
-              "author is-full has-text-centered is-capitalized";
+              "p-3 author is-full has-text-centered is-capitalized";
             bookAuthor.innerHTML = `<h3>${author}</h3>`;
             bookContainer.appendChild(bookAuthor);
             let bookDescription = document.createElement("div");
@@ -103,7 +104,7 @@ typeSubmit.addEventListener("click", function (event) {
             selectionContainer.appendChild(bookContainer);
           })
           .then((ok) => {})
-          // if Google does not have information on the book, book will display without description
+          // IF GOOGLE DOESN'T HAVE INFORMATION ABOUT THE BOOK THE BOOK WILL THEN BE DISPLAYED WITHOUT ANY DESCRIPTION (SNIPPET)
           .catch((err) => {
             snippet = "Description not available";
 
@@ -118,12 +119,12 @@ typeSubmit.addEventListener("click", function (event) {
             bookContainer.appendChild(bookCover);
             let bookTitle = document.createElement("div");
             bookTitle.className =
-              "column title is-full has-text-centered is-capitalized";
-            bookTitle.innerHTML = `<h2>${title}</h2>`;
+              "p-3 title is-full has-text-centered is-capitalized";
+            bookTitle.innerHTML = `<h2 class='column'>${title}</h2>`;
             bookContainer.appendChild(bookTitle);
             let bookAuthor = document.createElement("div");
             bookAuthor.className =
-              "column author is-full has-text-centered is-capitalized";
+              "p-3 author is-full has-text-centered is-capitalized";
             bookAuthor.innerHTML = `<h3>${author}</h3>`;
             bookContainer.appendChild(bookAuthor);
             let bookDescription = document.createElement("div");
@@ -140,6 +141,17 @@ typeSubmit.addEventListener("click", function (event) {
     });
 });
 
+// // SCANS FOR CLICK EVENTS
+searchClick = (event) => {
+  let targetEl = event.target;
+  // IF THE ADD TO FAVORITES BUTTON (HEART) IS PRESSED
+  if (targetEl.matches(".saveBook")) {
+    let child = targetEl;
+    let parent = child.parentNode;
+    addToFav(parent);
+  }
+};
+
 // // SAVE TO LOCAL STORAGE
 addToFav = (parent) => {
   let cover = parent.childNodes[0].getAttribute("src");
@@ -155,6 +167,7 @@ addToFav = (parent) => {
     isbn: `${isbnCode}`,
   };
   let retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || [];
+  // CHECKING TO SEE IF THE BOOK IS ALREADY ADDED TO LOCAL STORAGE 
   if (localStorage.length > 0) {
     for (i = 0; i < retrievedData.length; i++) {
       if (retrievedData[i].isbn === newItem.isbn) {
@@ -174,24 +187,14 @@ addToFav = (parent) => {
   }
 };
 
-// // SCANS FOR CLICK EVENTS
-searchClick = (event) => {
-  let targetEl = event.target;
-  // IF THE ADD TO FAVORITES BUTTON (HEART) IS PRESSED
-  if (targetEl.matches(".saveBook")) {
-    let child = targetEl;
-    let parent = child.parentNode;
-    addToFav(parent);
-  }
-};
-
-// FUNCTION FOR LOADING SAVE iTEMS LIST
+// FUNCTION FOR LOADING SAVE iTEMS LIST FROM LOCAL STORAGE
 let loadSaveList = () => {
   let savedItemsList = document.getElementById("savedItemsList");
   savedItemsList.classList =
     "is-flex is-justify-content-center is-flex-direction-row is-flex-wrap-wrap";
   savedItemsList.innerHTML = "";
   let retrievedData = JSON.parse(localStorage.getItem("savedBooks")) || [];
+  // IF THERE'S ITEMS IN LOCAL STORAGE ADD THAT TO SAVE LIST 
   if (localStorage.length > 0) {
     for (i = 0; i < retrievedData.length; i++) {
       let listItem = document.createElement("li");
@@ -214,22 +217,22 @@ let loadSaveList = () => {
       author.textContent = `${retrievedData[i].author}`;
       titleAuthorDiv.appendChild(author);
       listItem.appendChild(titleAuthorDiv);
-
-      savedItemsList.appendChild(listItem);
+        savedItemsList.appendChild(listItem);
     }
   } else {
     let placeHolder = document.createElement("p");
     placeHolder.textContent = "Your list is Empty.";
-    savedItemsList.appendChild(placeHolder);
+      savedItemsList.appendChild(placeHolder);
   }
 };
 
 // LOAD SAVED LIST
 loadSaveList();
 
+// IF SUBMIT BUTTON IS CLICKED 
 selectionContainer.addEventListener("click", searchClick);
 
-// BULMA PRECODED FOR NAVBAR FUNCTIONALITY
+// BULMA's PRE-CODED FOR NAVBAR FUNCTIONALITY
 document.addEventListener("DOMContentLoaded", () => {
   // Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(
