@@ -1,5 +1,5 @@
 const apiKey = "BLGvAn7JO1dxMb7GRWTLG00RNEZOGQMC";
-const googleKey = "AIzaSyCx8NiDI6Ge2sYcKzVC2o3wYYzOESQGHKs";
+const googleKey = "AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU";
 // MULTIPLE GOOGLE API KEYS
 // const makiGoogleApi = 'AIzaSyCx8NiDI6Ge2sYcKzVC2o3wYYzOESQGHKs';
 // const philipGoogleApi = 'AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc'
@@ -214,14 +214,6 @@ let loadSaveList = () => {
       author.innerHTML = `<span class="is-underlined has-text-weight-bold">Author:</span> ${retrievedData[i].author}`;
       titleAuthorDiv.appendChild(author);
       listItem.appendChild(titleAuthorDiv);
-      let descriptionDiv = document.createElement("div");
-      descriptionDiv.classList = `is-flex is-align-content-center p-2 has-text-centered`;
-      let description = document.createElement("p");
-      if (retrievedData[i].description != "") {
-        description.innerHTML = `<span class="is-underlined has-text-weight-bold">Description:</span> ${retrievedData[i].description}`;
-        descriptionDiv.appendChild(description);
-        listItem.appendChild(descriptionDiv);
-      }
 
       savedItemsList.appendChild(listItem);
     }
