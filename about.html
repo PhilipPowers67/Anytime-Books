@@ -11,19 +11,56 @@
 <!-- doctype ends -->
 
 <!-- body starts -->
-<section>
+<body class="has-navbar-fixed-top">
+
   <!-- header / navigation starts -->
   <header>
-
+    <!-- <h1 class="title has-text-white">Logo</h1> -->
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+      <!-- anytime books image  -->
+      <div class="navbar-brand">
+        <a class="navbar-item" href="./index.html">
+          <img src="./assets/images/AnytimeBooksLogoCase.png">
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <!-- links  -->
+      <div id="navbarBasic" class="navbar-menu has-dropdown">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-danger" href="./index.html">
+                <strong>Home</strong>
+              </a>
+              <a class="button is-primary" href="./index.html#information">
+                <strong>Genre Selection</strong>
+              </a>
+              <!-- Seperate page for saved reading list
+                <a class="button is-primary">
+                <strong>Reading List</strong>
+              </a>-->
+              <a class="button is-warning" href="./about.html">
+                <strong>About</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </nav>
   </header>
   <!-- header / navigation ends -->
 
   <!-- about anytime books section starts-->
-  <section class="section">
+  <section class="section mt-6 pt-6">
     <div class="container">
       <div class="columns">
         <div class="column py-0">
-              <img src="./assets/images/about-cover.jpg" alt="bookcover line drawing with a red bookshelf and About Anytime Books Title" style="max-width: 95%;">
+              <img id="about-book" src="./assets/images/about-cover.jpg" alt="bookcover line drawing with a red bookshelf and About Anytime Books Title" >
         </div>
         <div class="column is-size-4">
           <p class="notification">      
@@ -191,10 +228,19 @@
   <!-- credits section ends -->
 
   <!-- footer starts-->
-  <footer class="has-text-centered py-5">
-    ©2021 Gjonbalaj, Maki, Mateo, Powers, Winslow
+  <footer class="footer has-background-white">
+    <div class="content has-text-centered has-text-success has-text-weight-bold">
+      <p>
+        
+        <a class="footerImage is-9by1">
+          <img src="./assets/images/FooterCropped.png">
+        </a>
+        Anytime Books by: ©2021 Gjonbalaj, Maki, Mateo, Powers, Winslow
+      </p>
+    </div>
   </footer>
   <!-- footer ends -->
+  <script src="./assets/js/script.js"></script>
 </body>
 <!-- bpdu ends-->
 </html>
