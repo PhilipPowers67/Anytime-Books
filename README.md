@@ -18,7 +18,6 @@ https://
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
-- [License](#license)
 
 ## Built With
 
@@ -29,7 +28,10 @@ https://
 
 ## Visuals
 
-![image](./assets/images/)
+![ScreenShot](./assets/images/MainPage.png)
+![ScreenShot](./assets/images/BookSelector.png)
+![ScreenShot](./assets/images/SaveList.png)
+![ScreenShot](./assets/images/AboutPage.png)
 
 ## Story
 
@@ -77,11 +79,6 @@ The application can be displayed in a web browser and was built mobile first, to
 
 For personal, non-commercial, and educational use and each developers' porfolio purposes.
 
-## Support
-
-Contact:  
-Email:
-
 ## Roadmap
 
 Initial release: The current application includes the ability to make a selection from a Best Seller list and save information, in local storage, on your machine, for future use (retrievals, and additions). It does not cross-sync between devices, at this time.
@@ -109,8 +106,6 @@ Dafina Gjonbalaj and Philip Powers focused on overall design, colors, and brandi
 
 ## Acknowledgments
 
-Acknowledgements: University of Connecticut Educational Team: including Dan Seskey, Matt Torcellini, Symone Varnado, Maura Fortino & Claudio.
-
-## License
+Acknowledgements: University of Connecticut Educational Team: including Dan Seskey, Matt Torcellini, Symone Varnado, Maura Fortino.
 
 ### ©2021 Gjonbalaj, Maki, Mateo, Powers, Winslow
