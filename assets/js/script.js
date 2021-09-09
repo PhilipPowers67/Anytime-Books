@@ -1,5 +1,5 @@
 const apiKey = "BLGvAn7JO1dxMb7GRWTLG00RNEZOGQMC";
-const googleKey = "AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU";
+const googleKey = "AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc";
 // MULTIPLE GOOGLE API KEYS
 // const makiGoogleApi = 'AIzaSyCx8NiDI6Ge2sYcKzVC2o3wYYzOESQGHKs';
 // const philipGoogleApi = 'AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc'
@@ -8,12 +8,12 @@ var arr = [];
 let bookType = document.getElementById("bookType");
 var selectionContainer = document.querySelector("#viewSelection");
 
+// collects information from NYT best sellers list to create a selection for user
 fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
   .then((response) => {
     return response.json();
   })
   .then((response) => {
-    // console.log(response);
     for (i = 0; i < response.results.length; i++) {
       // pushing the name and the code
       arr.push({
@@ -21,7 +21,6 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
         code: response.results[i].list_name_encoded,
       });
     }
-    // console.log(arr);
   })
   .then(() => {
     // FILTER LIST AND LEAVE GENRES ONLY
@@ -45,12 +44,12 @@ fetch(`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`)
   })
   .catch((error) => console.log(error));
 
+// on submit from user fetches information from NYT and google to give the user a good selection of books to choose
 typeSubmit.addEventListener("click", function (event) {
   event.preventDefault();
   selectionContainer.innerHTML = "";
   bookInfo = [];
   let userSelection = document.querySelector("#bookType").value;
-  // console.log(userSelection);
 
   fetch(
     `https://api.nytimes.com/svc/books/v3/lists/current/${userSelection}.json?api-key=${apiKey}`
@@ -59,6 +58,7 @@ typeSubmit.addEventListener("click", function (event) {
       return secondResponse.json();
     })
     .then((secondResponse) => {
+      // forloop takes information collected and places it on the page with a save list option
       for (i = 0; i < secondResponse.results.books.length; i++) {
         let isbn = secondResponse.results.books[i].primary_isbn13;
         let author = secondResponse.results.books[i].author;
@@ -84,12 +84,12 @@ typeSubmit.addEventListener("click", function (event) {
             bookContainer.appendChild(bookCover);
             let bookTitle = document.createElement("div");
             bookTitle.className =
-              "column title is-full has-text-centered is-capitalized";
+              "title is-full has-text-centered is-capitalized";
             bookTitle.innerHTML = `<h2>${title}</h2>`;
             bookContainer.appendChild(bookTitle);
             let bookAuthor = document.createElement("div");
             bookAuthor.className =
-              "column author is-full has-text-centered is-capitalized";
+              "author is-full has-text-centered is-capitalized";
             bookAuthor.innerHTML = `<h3>${author}</h3>`;
             bookContainer.appendChild(bookAuthor);
             let bookDescription = document.createElement("div");
@@ -98,13 +98,14 @@ typeSubmit.addEventListener("click", function (event) {
             bookContainer.appendChild(bookDescription);
             let saveButton = document.createElement("button");
             saveButton.classList = "saveBook p-1 mt-5 heart-red";
-            saveButton.setAttribute("title", "Add to Favorites");
+            saveButton.setAttribute("title", "Add to Reading List");
             bookContainer.appendChild(saveButton);
             selectionContainer.appendChild(bookContainer);
           })
           .then((ok) => {})
+          // if Google does not have information on the book, book will display without description
           .catch((err) => {
-            snippet = "";
+            snippet = "Description not available";
 
             let bookContainer = document.createElement("div");
             bookContainer.classList =
@@ -131,7 +132,7 @@ typeSubmit.addEventListener("click", function (event) {
             bookContainer.appendChild(bookDescription);
             let saveButton = document.createElement("button");
             saveButton.classList = "saveBook p-1 mt-5 heart-red";
-            saveButton.setAttribute("title", "Add to Favorites");
+            saveButton.setAttribute("title", "Add to Reading List");
             bookContainer.appendChild(saveButton);
             selectionContainer.appendChild(bookContainer);
           });
@@ -141,7 +142,6 @@ typeSubmit.addEventListener("click", function (event) {
 
 // // SAVE TO LOCAL STORAGE
 addToFav = (parent) => {
-  // console.log(parent)
   let cover = parent.childNodes[0].getAttribute("src");
   let title = parent.childNodes[1].firstChild.textContent;
   let author = parent.childNodes[2].firstChild.textContent;
