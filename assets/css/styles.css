@@ -130,7 +130,7 @@ form button {
 .heart-red:before,
 .heart-red:after {
   content: "";
-  background-color:rgb(32, 156, 238);
+  background-color: rgb(32, 156, 238);
   border-radius: 50%;
   height: 20px;
   position: absolute;
@@ -195,7 +195,8 @@ form button {
 }
 
 @media screen and (max-width: 575px) {
-	#heroSection {
-		background-image: url(../images/HeroMobile.png);
-		background-size: 99%;
-}}
+  #heroSection {
+    background-image: url(../images/HeroMobile.png);
+    background-size: 99%;
+  }
+}
