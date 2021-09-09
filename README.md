@@ -49,7 +49,8 @@ AS A user
 
 - I WANT to cut the time it takes to find information about popular books
   - SO THAT I can find my next book, make a reading list, and start reading more books.
-    CRITERIA
+
+CRITERIA
 - GIVEN THAT I need to find books of interest, review information, or make a selection of books that I am interested in and cultivate a reading list
   - WHEN I load the application,
     - THEN I want to view a clean and simple interface that doesn't take a lot of time to use.
@@ -72,7 +73,8 @@ As A developer
 
 - I WANT information about Anytime Books.
   - SO THAT I can contact the developers, contribute to the project, view more information and/or view the code.
-    CRITERIA
+
+CRITERIA
 - GIVEN THAT I want to contact the developers
   - WHEN I load the application
     - THEN I can click on the About link, in the navigation bar
