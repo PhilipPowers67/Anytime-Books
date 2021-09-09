@@ -28,11 +28,14 @@ https://
 
 ## Visuals
 
+Main Page
 ![ScreenShot](./assets/images/MainPage.png)
+Books Selected
 ![ScreenShot](./assets/images/BookSelector.png)
+Save List
 ![ScreenShot](./assets/images/SaveList.png)
+About Page
 ![ScreenShot](./assets/images/AboutPage.png)
-
 ## Story
 
 AS A user
