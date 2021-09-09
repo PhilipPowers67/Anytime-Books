@@ -10,7 +10,7 @@ At this time, users can look at the save list, where they will be able to again 
 
 ## Page Link
 
-https://
+https://makispear.github.io/Anytime-Books/
 
 ## Table of Contents
 
@@ -26,6 +26,9 @@ https://
 - Bulma CSS Framework
 - JavaScript
 
+## Code link
+
+https://github.com/Makispear/Anytime-Books/
 ## Visuals
 
 Main Page
