@@ -6,7 +6,7 @@ This project provides a simple application to help a user choose their next book
 
 Then the user, choose store selections of their choice, for retrieval at a later time. Hence, 'Anytime Books!'. 'Best Seller' book selections change, sometimes, on a weekly basis and memories fail us, especially during these busy times. Never forget the book you wanted to read, again! No more chasing down lost notes on little pieces of paper. The books will be listed, on the save page, with just a 'çlick'.
 
-At this time, users can look at the save list, where they will be able to again view the book's cover, Title, Author, and the ISBN. If they did not choose to install the site/application on their local machine, they can also see what others are interested in reading.
+Users can look at the save list, where they will be able to again view the book's cover, Title, and Author.
 
 ## Page Link
 
