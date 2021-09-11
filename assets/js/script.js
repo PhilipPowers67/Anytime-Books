@@ -1,5 +1,5 @@
 const apiKey = "BLGvAn7JO1dxMb7GRWTLG00RNEZOGQMC";
-const googleKey = "AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc";
+const googleKey = "AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU";
 // MULTIPLE GOOGLE API KEYS
 // const makiGoogleApi = 'AIzaSyCx8NiDI6Ge2sYcKzVC2o3wYYzOESQGHKs';
 // const philipGoogleApi = 'AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc'
@@ -203,6 +203,7 @@ let loadSaveList = () => {
       bookCoverDiv.classList = "m-1 p-1 is-flex is-justify-content-center";
       let bookCover = document.createElement("img");
       bookCover.setAttribute("src", `${retrievedData[i].cover}`);
+      bookCover.setAttribute('alt', `${retrievedData[i].title}'s cover`);
       bookCoverDiv.appendChild(bookCover);
       listItem.appendChild(bookCoverDiv);
       let titleAuthorDiv = document.createElement("div");

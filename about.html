@@ -13,28 +13,50 @@
   </head>
   <!-- doctype ends -->
 
-<!-- body starts -->
-<body class="has-navbar-fixed-top">
-
-  <!-- header / navigation starts -->
-  <header>
-    <!-- <h1 class="title has-text-white">Logo</h1> -->
-    <nav class="navbar is-fixed-top is-flex is-justify-content-space-between is-align-items-center is-flex-wrap-wrap p-3" role="navigation" aria-label="main navigation">
-      <!-- anytime books image  -->
-      
-      <!-- links  -->
-      <!-- navbar-end -->
-          <div class="navbar-item navbar-end">
-            <div class="buttons">
-              <a class="button is-danger" href="./index.html">
-                <strong>Home</strong>
-              </a>
-              <a class="button is-primary" href="./index.html#information">
-                <strong>Genre Selection</strong>
-              </a>
-              <a class="button is-success" href="#credits">
-                <strong>Credits</strong>
-              </a>
+  <!-- body starts -->
+  <body class="has-navbar-fixed-top">
+    <!-- header / navigation starts -->
+    <header>
+      <!-- <h1 class="title has-text-white">Logo</h1> -->
+      <nav
+        class="navbar is-fixed-top"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <!-- anytime books image  -->
+        <div class="navbar-brand">
+          <a class="navbar-item" href="./index.html">
+            <img 
+            src="assets/images/AnytimeBooksLogoCase.png" 
+            alt="anytime logo" />
+          </a>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasic"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- links  -->
+        <div id="navbarBasic" class="navbar-menu has-dropdown">
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-danger" href="index.html">
+                  <strong>Home</strong>
+                </a>
+                <a class="button is-primary" href="#information">
+                  <strong>Genre Selection</strong>
+                </a>
+                <a class="button is-success" href="#credits">
+                  <strong>Credits</strong>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -49,7 +71,7 @@
           <div class="column py-0">
             <img
               id="about-book"
-              src="./assets/images/about-cover.jpg"
+              src="assets/images/about-cover.jpg"
               alt="bookcover line drawing with a red bookshelf and About Anytime Books Title"
             />
           </div>
@@ -74,7 +96,7 @@
       </div>
       <div class="is-centered">
         <img
-          src="./assets/images/book-divider.jpg"
+          src="assets/images/book-divider.jpg"
           alt="line drawing with stacked books on each side of line divider"
         />
       </div>
@@ -93,7 +115,7 @@
             <div>
               <div class="py-3">
                 <img
-                  src="./assets/images/Dafina-G.jpg"
+                  src="assets/images/Dafina-G.jpg"
                   alt="Dafina Gjonbalaj, long curly hair and a smile."
                   style="max-width: 87%"
                 />
@@ -144,8 +166,8 @@
           <div class="column has-text-centered">
             <div>
               <div>
-                <img src="./assets/images/makispear.jpg" alt="Maki A. Maki,
-                short hair, mustache and slight beard, with a smile."">
+                <img src="assets/images/makispear.jpg" alt="Maki A. Maki, short
+                hair, mustache and slight beard, with a smile."">
               </div>
               <div>
                 <div class="is-size-4 has-text-weight-bold py-2">
@@ -199,7 +221,7 @@
             <div>
               <div>
                 <img
-                  src="./assets/images/gmateo.jpg"
+                  src="assets/images/gmateo.jpg"
                   alt="Guillero Mateo short hair, glasses and smiling."
                 />
               </div>
@@ -252,7 +274,7 @@
             <div>
               <div>
                 <img
-                  src="./assets/images/philip-p.jpg"
+                  src="assets/images/philip-p.jpg"
                   alt="Philip Powers, with a serious look."
                 />
               </div>
@@ -305,7 +327,7 @@
             <div>
               <div class="py-3">
                 <img
-                  src="./assets/images/S-Winslow.jpg"
+                  src="assets/images/S-Winslow.jpg"
                   alt="Sherri Winslow with long hair, sunglasses on head, and slight smile."
                 />
               </div>
@@ -336,7 +358,7 @@
                 >
                 <a
                   class="has-text-link is-size-5 pr-6"
-                  href="mailto:gamateo@gmail.com"
+                  href="mailto:swinslowcoding@gmail.com"
                   >Email</a
                 >
                 <a
@@ -365,14 +387,16 @@
       >
         <p>
           <a class="footerImage is-9by1">
-            <img src="./assets/images/FooterCropped.png" />
+            <img 
+            src="assets/images/FooterCropped.png"
+            alt="footer image" />
           </a>
           Anytime Books by: ©2021 Gjonbalaj, Maki, Mateo, Powers, Winslow
         </p>
       </div>
     </footer>
     <!-- footer ends -->
-    <script src="./assets/js/about.js"></script>
+    <script src="assets/js/about.js"></script>
   </body>
   <!-- bpdu ends-->
 </html>
