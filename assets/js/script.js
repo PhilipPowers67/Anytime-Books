@@ -203,6 +203,7 @@ let loadSaveList = () => {
       bookCoverDiv.classList = "m-1 p-1 is-flex is-justify-content-center";
       let bookCover = document.createElement("img");
       bookCover.setAttribute("src", `${retrievedData[i].cover}`);
+      bookCover.setAttribute('alt', `${retrievedData[i].title}'s cover`);
       bookCoverDiv.appendChild(bookCover);
       listItem.appendChild(bookCoverDiv);
       let titleAuthorDiv = document.createElement("div");
