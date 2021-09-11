@@ -1,5 +1,5 @@
 const apiKey = "BLGvAn7JO1dxMb7GRWTLG00RNEZOGQMC";
-const googleKey = "AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc";
+const googleKey = "AIzaSyD10gq8yqLKQYK-Oz7ei1Iv6Ty10DDMgxU";
 // MULTIPLE GOOGLE API KEYS
 // const makiGoogleApi = 'AIzaSyCx8NiDI6Ge2sYcKzVC2o3wYYzOESQGHKs';
 // const philipGoogleApi = 'AIzaSyAEI0gVqwCMa6e3jFyLmnNGsPC3cjXCrdc'
