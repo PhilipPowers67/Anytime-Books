@@ -14,6 +14,10 @@
 #about-book {
   max-width: 465px;
 }
+ 
+.add-link {
+  justify-content: space-around;
+}
 
 @media screen and (max-width: 768px) {
   #about-book {
