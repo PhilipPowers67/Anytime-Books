@@ -2,11 +2,11 @@
 
 ## Description
 
-This project provides a simple application to help the user choose their next book to read. The user can utilize a simple interface and be provided a small selection of books that peak their interest. By selecting a genre from a drop-down list the user can request information about books that are currently on a Best Seller list. They can then review the Title, Author, cover, and a brief description of the book.
+Anytime Books is a solution to book lovers' continuous search for the next read. Our site recommends best sellers based on the reader's genre of choice and allows the reader to save any book of interest, in the list, for easy future access.
 
-The user can then add books to a reading list provided on the site for retrieval at a later time. Hence, 'Anytime Books!'. The 'Best Seller' book list will change weekly to present the latest best seller published, offering variety.
+The application provides a simple user interface where users select a genre, from a drop-down list, and receive a small list of best-selling books, of related interest.  They can then review the Title, Author, cover, and a brief description of the book.  The user can then add books to a reading list that will be saved to their local devices for retrieval later. Hence, 'Anytime Books!'.  Users can then look at their saved reading list, where they will be able to again view the book's cover, title, and author.
 
-At this time, users can look at the save list, where they will be able to again view the book's cover, title, and author.
+The 'Best Seller' book list will change weekly to present the user with the latest best sellers, offering a continued variety of reads.
 
 ## Page Link
 
@@ -89,15 +89,17 @@ CRITERIA
 
 ## Installation
 
-The application can be displayed in a web browser and was built mobile first, to be responsive to a variety of devices and screen sizes.
+The application can be displayed in a web browser and was built mobile first to be responsive to a variety of devices and screen sizes.
 
 ## Usage
 
-For personal, non-commercial, and educational use and each developer's portfolio purposes.
+For personal, non-commercial, and educational use and participating developer's portfolio purposes.
 
 ## Roadmap
 
-Initial release: The current application includes the ability to select from a Best Seller list and save information, in local storage, on your machine, for future use (retrievals, and additions). It does not cross-sync between devices, currently.
+Initial release: 
+
+The current application includes the ability to select from a Best Seller list and save information, in local storage (on your device), for future use (retrievals, and additions). Currently, it does not cross-sync between devices.
 
 Future features:
 
@@ -116,7 +118,7 @@ Developers:
 - Philip Powers
 - Sherri Winslow
 
-This project was pair-coded by the above developers in a variety of ways. We worked together to get initial functionality, with a bare-bones html. Afterwards, each developer worked individually and in pairs on different aspects of the project. Although, each had a primary focus, we met as a group and pair-coded and resolved issues, helping each other to provide a quality product, that we hope you will enjoy.
+This project was pair-coded, by the above developers, in a variety of ways. We worked together to get initial functionality, with a bare-bones html. Afterwards, each developer worked individually, and in pairs, on different aspects of the project. Although, each had a primary focus, we met as a group and pair-coded and resolved issues, helping each other to provide a quality product, that we hope you will enjoy.
 
 Dafina Gjonbalaj and Philip Powers focused on overall design, colors, and branding and the navigation/header and footer. Guillermo Mateo and Maki A. Maki focus of JavaScript coding, APIs and local storage for the save list. Sherri Winslow focused on documentation: an about page for developer information and contact and the readme. This was truly a group effort that learned to meet challenges and obstacles together.
 
